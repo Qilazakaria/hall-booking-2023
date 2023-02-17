@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table, tr, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 10px 20px;
+    }
+  </style>
+  <script>
+		window.onload = function() {
+      let table = document.getElementById('table');
+
+			var request = new XMLHttpRequest();
+			request.open("GET", "https://microservices-2023.herokuapp.com/", true);
+			request.onload = function() {
+				var stud_object = JSON.parse(this.response);
+        stud_object.forEach(elem => {
+          let row = document.createElement('tr');
+          let td1 = document.createElement('td');
+          let td2 = document.createElement('td');
+          let td3 = document.createElement('td');
+          let td4 = document.createElement('td');
+          let td5 = document.createElement('td');
+          let td6 = document.createElement('td');
+          let td7 = document.createElement('td');
+          td1.innerHTML = elem.staffname;
+          td2.innerHTML = elem.staffemail;
+          td3.innerHTML = elem.stafftelnum;
+          td4.innerHTML = elem.staffhomeno;
+          td5.innerHTML = elem.staffaddress;
+          td6.innerHTML = elem.staffcity;
+          td7.innerHTML = elem.staffstate;
+          row.appendChild(td1);
+          row.appendChild(td2);
+          row.appendChild(td3);
+          row.appendChild(td4);
+          row.appendChild(td5);
+          row.appendChild(td6);
+          row.appendChild(td7);
+          table.appendChild(row);
+        });
+			}
+			request.send();
+		}
+	</script>
+</head>
+<body>
+  <table id="table">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Home Number</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      
+    </tr>
+  </table>
+</body>
+</html>
