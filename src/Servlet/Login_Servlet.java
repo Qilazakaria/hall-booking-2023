@@ -24,19 +24,16 @@ public class Login_Servlet extends HttpServlet {
 		Staff staff_info = new Staff();
 		session = request.getSession(true);
 		
-		staff_info.setStaff_idnum(request.getParameter("staff_idnum"));
-		staff_info.setStaff_password(request.getParameter("staff_password"));
+		staff_info.setStaffemail(request.getParameter("username"));
+		staff_info.setStaffpass(request.getParameter("password"));
 		
 		Staff staff_login = staffdao.loginstaff(staff_info);
 		
-		if(staff_login.isValid_login() == "Successfully login") {
-			session.setAttribute("session_idnum", staff_login.getStaff_idnum());
-			session.setAttribute("session_name", staff_login.getStaff_name());
-			session.setAttribute("session_level", staff_login.getStaff_level());
-			response.sendRedirect("Redirect_Servlet?action=location");
+		if(staff_login.isLoginstatus() == true) {
+			response.sendRedirect("AdminMainPage.jsp");
 		}
 		else {
-			session.setAttribute("session_status", staff_login.isValid_login());
+			System.out.println("login failed");
 			response.sendRedirect("index.jsp");
 		}
 	}
