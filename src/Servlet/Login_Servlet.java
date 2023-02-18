@@ -33,7 +33,7 @@ public class Login_Servlet extends HttpServlet {
 			response.sendRedirect("AdminMainPage.jsp");
 		}
 		else {
-			System.out.println("login failed");
+			System.out.println("login failed,please try again.");
 			response.sendRedirect("index.jsp");
 		}
 	}

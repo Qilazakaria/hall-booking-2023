@@ -23,8 +23,8 @@
 	</head>
 <body> 
     <div class="center">
-        <h1>ADMIN LOGIN</h1>
-        <form action="Login_Servlet" method="post">
+        <h1>CUSTOMER LOGIN</h1>
+        <form action="CustLogin_Servlet" method="post">
             <div class="txt_field">
                 <input type="text" placeholder="Username" name="username" required>
             </div>
@@ -32,10 +32,11 @@
                 <input type="password" placeholder="Password" name="password" required>
             </div>
             <div class="signup_link">
-                
+                Don't have account ? <a href="CustomerRegistration.jsp">Signup</a>
+                <br>
                 <input type="submit" value="Login">
                 <br>
-                <a href="CustomerLogin.jsp">Login as customer</a>
+                <a href="index.jsp">Login as admin</a>
             </div>
             
              <c:if test="${errorMessage != null}">

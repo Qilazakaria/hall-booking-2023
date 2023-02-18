@@ -1,0 +1,70 @@
+@charset "ISO-8859-1";
+/* footer */
+	body {
+	  margin: 0;
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.topnav {
+	  overflow: hidden;
+	  background-color: #2196F3;
+	}
+	
+	.topnav a {
+	  float: right;
+	  color: #f2f2f2;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	  font-size: 17px;
+	}
+	
+	.topnav a:hover {
+	  background-color: 	#fbd600;
+	  color: black;
+	}
+	
+	.topnav a.active {
+	  background-color: #04AA6D;
+	  color: white;
+	}
+/* button search */
+	* {
+	  box-sizing: border-box;
+	}
+	
+	form.search input[type=text] {
+	  padding: 5px;
+	  font-size: 17px;
+	  border: 1px solid grey;
+	  float: left;
+	  width: 80%;
+	  background: #f1f1f1;
+	}
+	
+	form.search button {
+	  float: left;
+	  width: 20%;
+	  padding: 5px;
+	  background: #2196F3;
+	  color: white;
+	  font-size: 17px;
+	  border: 1px solid grey;
+	  border-left: none;
+	  cursor: pointer;
+	}
+	
+	form.search button:hover {
+	  background: #0b7dda;
+	}
+	
+	form.search::after {
+	  content: "";
+	  clear: both;
+	  display: table;
+	} 
+	.add {
+	  overflow: hidden;
+	  background-color: #2196F3;
+	}
+	

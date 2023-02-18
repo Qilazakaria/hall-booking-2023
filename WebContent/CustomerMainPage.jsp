@@ -51,12 +51,9 @@
 		 -->
 		<div class="navbar"> 
 		 <a class="active" href="#"><i class="fa fa-home" class="split"></i> Home</a> 
-		 <a href="#"><i class="" class="split"></i> Assets</a> 
-		 <a href="#"><i class="" class="split"></i> Maintenance</a> 
-		 <a href="#"><i class="" class="split"></i> Servicer</a> 
-		 <a href="StaffListBooking.jsp"><i class="" class="split"></i> Booking</a> 
-		 <a href="#"><i class="fa fa-users" class="split"></i> Customer</a> 
-		   <li style="float:right"><a href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+		 <a href="#"><i class="" class="split"></i> Booking</a> 
+		 <a href="#"><i class="" class="split"></i> Edit Profile</a> 
+		   <li style="float:right"><a href="CustomerLogin.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
 		</div> 
 		
 		<h1> Kompleks Japerun Duyong</h1>
