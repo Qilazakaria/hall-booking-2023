@@ -4,7 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="Form.css" rel="stylesheet" type="text/css">
+<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="assets/css/customernavigation.css"> 
+<link rel="stylesheet" href="assets/css/staffadd.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
 <title>Staff Update Form</title>
 </head>
 <body>
@@ -14,7 +18,17 @@
 String staffid=request.getParameter("staffid");  
 Staff s=staffDAO.getRecordById(Integer.parseInt(staffid));  
 %>   
-  
+  <div class="navbar"> 
+		 <a href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
+		 <a class="active"   href="StaffView.jsp"><i class="split"></i> Staff</a>
+		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
+		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
+		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
+		 <a href=""><i class="" class="split"></i> Assets</a> 
+		 <a  href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
+		 
+		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+		</div> 
 	<div class="container" style=text-align:center>
   	<form action="StaffUpdateFunction.jsp" method="post">
   	<h2>UPDATE STAFF ACCOUNT</h2>
@@ -73,14 +87,15 @@ Staff s=staffDAO.getRecordById(Integer.parseInt(staffid));
 
     
     <label for="adminid">ADMIN ID:</label><br>
-    <input type="text" name="adminid" value="<%=s.getAdminid() %>" ><br>
+    <input type="text" name="adminid" value="<%=s.getAdminid() %>"  disabled/><br>
 
     <br>
 	
-    <button class="button" value="Submit" name="submit">SUBMIT</button>
+    
+    <input type="submit" value="Submit">
     <br>
   </form>
 </div>
-
+<a href="StaffView.jsp"><button class="button">BACK</button></a> 
 </body>
 </html>

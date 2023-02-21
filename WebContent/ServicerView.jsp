@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
 <link href="assets/css/bookingForm.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="assets/css/customernavigation.css"> 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+ 
 <title>Staff</title>
 </head>
 
@@ -65,7 +67,7 @@ request.setAttribute("list",list);
 		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
 		 <a class="active" href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
 		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
-		 <a href=""><i class="" class="split"></i> Assets</a> 
+		 <a href="AssetsController?action=list"><i class="" class="split"></i> Assets</a> 
 		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 		 
 		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
@@ -92,7 +94,7 @@ request.setAttribute("list",list);
 			<td>${se.getServicertelno()}</td>
 			<td>${se.getServicerhomeno()}, ${se.getServiceraddress()}, ${se.getServicercity()}, ${se.getServicerpostcode()}, ${se.getServicerstate()}.</td> 
 			<td>
-			<a href="ServicerUpdate.jsp?servicerid=${se.getServicerid()}"><button class='edit'>EDIT</button> </a> 
+			<a href="ServicerUpdate.jsp?servicerid=${se.getServicerid()}"><button class='edit'>UPDATE</button> </a> 
 			</td>
 			</tr>  
 			</tbody>
@@ -101,7 +103,8 @@ request.setAttribute("list",list);
 		</table>
 		<br></br>
 	
-		<a style="float:left"href="ServicerAdd.jsp" ><button class="button button2">ADD SERVICER</button></a>
+		
+		<a style="float:left"href="ServicerAdd.jsp" button class="button button2">ADD SERVICER</button></a>
 
 </body>
 </html>

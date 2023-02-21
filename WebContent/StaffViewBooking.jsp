@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="assets/css/customernavigation.css"> 
-<link rel="stylesheet" href="assets/css/bookingForm.css"> 
+<link rel="stylesheet" href="assets/css/staffadd.css"> 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 	
 	<title>List Booking</title>
@@ -99,8 +99,8 @@ booking b = bookingDao.getRecordById(bookingID);
 			
 		</table>
 		<br></br>
-	
-<a href="StaffListBooking.jsp"><button class="button">BACK</button></a> 		
+			
+<a style="float:left"href="StaffListBooking.jsp" button class="button button2">BACK</button></a>
 	
 </body>
 </html>

@@ -3,8 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<link href="Form.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
+<link href="assets/css/staffadd.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="assets/css/customernavigation.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  
 <title>Staff Registration Form</title>
 </head>
 <body>
@@ -14,7 +18,7 @@
 	 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
 	 <a class="active" href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
 	 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
-	 <a href=""><i class="" class="split"></i> Assets</a> 
+	 <a href="AssetsController?action=list"><i class="" class="split"></i> Assets</a> 
 	 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 	 
 	 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
@@ -25,22 +29,22 @@
   	
 	<br><br>    
 	<label for="servicername">NAME: </label><br>
-    <input type="text"  name="servicername" id="servicername" required><br>
+    <input type="text"  name="servicername" id="servicername" required><br><br>
     
     <label for="servicertelno">TELEHONE NUMBER:</label><br>
-    <input type="text"  name="servicertelno" id="servicertelno" required><br>
+    <input type="text"  name="servicertelno" id="servicertelno" required><br><br>
     
     <label for="servicerhomeno">HOME NUMBER:</label><br>
-    <input type="text"  name="servicerhomeno" id="servicerhomeno" required><br>
+    <input type="text"  name="servicerhomeno" id="servicerhomeno" required><br><br>
     
     <label for="serviceraddress">ADDRESS: </label><br>
-    <input type="text" name="serviceraddress" id="serviceraddress" required><br>
+    <input type="text" name="serviceraddress" id="serviceraddress" required><br><br>
     
     <label for="servicercity">CITY:</label><br>
-    <input type="text"  name="servicercity" id="servicercity" required><br>
+    <input type="text"  name="servicercity" id="servicercity" required><br><br>
     
     <label for="servicerpostcode">POSTCODE:</label><br>
-    <input type="text"  name="servicerpostcode" id="servicerpostcode" required><br>
+    <input type="text"  name="servicerpostcode" id="servicerpostcode" required><br><br>
     
     <label for="servicerstate">STATE: </label><br>
     <select id="servicerstate" name = "servicerstate" class = "custom-select" required>
@@ -67,6 +71,6 @@
     <br>
   </form>
 </div>
-
+<a href="ServicerView.jsp"><button class="button">BACK</button></a> 
 </body>
 </html>

@@ -33,20 +33,20 @@ public class servicerDAO {
 	    return status;  
 	}
 	
-	public static int update(servicer se){  
+	public static int update(servicer s){  
 	    int status=0;  
 	    try{  
 	    	con = Database_Connection.getConnection() ;  
 	        PreparedStatement ps=con.prepareStatement(  
 	"update servicer set servicername=?,servicertelno=?,servicerhomeno=?,serviceraddress=?,servicercity=?,servicerpostcode=?,servicerstate=? where servicerid=?");  
-	        ps.setString(1,se.getServicername());
-	        ps.setString(2,se.getServicertelno());
-	        ps.setInt(3,se.getServicerhomeno());
-	        ps.setString(4,se.getServiceraddress());
-	        ps.setString(5,se.getServicercity());
-	        ps.setInt(6,se.getServicerpostcode());
-	        ps.setString(7,se.getServicerstate());
-	        ps.setInt(8,se.getServicerid());
+	        ps.setString(1,s.getServicername());
+	        ps.setString(2,s.getServicertelno());
+	        ps.setInt(3,s.getServicerhomeno());
+	        ps.setString(4,s.getServiceraddress());
+	        ps.setString(5,s.getServicercity());
+	        ps.setInt(6,s.getServicerpostcode());
+	        ps.setString(7,s.getServicerstate());
+	        ps.setInt(8,s.getServicerid());
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	    return status;  

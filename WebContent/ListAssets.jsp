@@ -37,7 +37,7 @@
 		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
 		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
 		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
-		 <a class="active" href=""><i class="" class="split"></i> Assets</a> 
+		 <a class="active" href="AssetsController?action=list"><i class="" class="split"></i> Assets</a> 
 		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 		 
 		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
@@ -51,10 +51,7 @@
 					<div class="col-sm-6">
 						<h2>List Assets</h2>
 					</div>
-					<div class="col-sm-6">
-						<a href="AddAssets.jsp" class="btn btn-success"> <i class="material-icons">&#xE147;</i>Add New Assets</a>
-											
-					</div>
+					
 				</div>
 			</div>
 			<table class="table table-striped table-hover">
@@ -82,6 +79,6 @@
   		</tr>
   
 	</table>
-
+<a href="AddAssets.jsp" class="btn btn-success"> Add New Assets</a>
 </body>
 </html>

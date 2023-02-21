@@ -111,7 +111,7 @@ request.setAttribute("list",list);
 		</table>
 		<br></br>
 	
-		<a style="float:left"href="ServicerAdd.jsp" ><button class="button button2">ADD STAFF</button></a>
+		<a style="float:left"href="StaffAdd.jsp" button class="button button2">ADD STAFF</button></a>
 
 </body>
 </html>
