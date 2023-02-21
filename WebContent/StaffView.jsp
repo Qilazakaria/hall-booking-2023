@@ -3,13 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="ISO-8859-1">
 <link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="assets/css/customernavigation.css"> 
+<link rel="stylesheet" href="assets/css/bookingForm.css"> 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-	
-	<title>List Booking</title>
-	</head>
+
+<title>Staff</title>
+</head>
+
 	<style>
 	table {
 	  font-family: arial, sans-serif;
@@ -50,63 +52,66 @@
 	  color: black;
 	}
 	</style>
-		
 <body>
-<%@page import="DAO.bookingDao,Model.booking,java.util.*"%>
+<%@page import="DAO.staffDAO,Model.Staff,java.util.*"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>  
    
 <%  
-List<booking> list=bookingDao.getAllRecords();  
+List<Staff> list=staffDAO.getAllRecords();  
 request.setAttribute("list",list);  
-%>  
+%> 
 
-<div class="navbar"> 
+	<div class="navbar"> 
 		 <a href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
-		 <a href="StaffView.jsp"><i class="split"></i> Staff</a>
+		 <a class="active" href="StaffView.jsp"><i class="split"></i> Staff</a>
 		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
 		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
 		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
 		 <a href=""><i class="" class="split"></i> Assets</a> 
-		 <a class="active" href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
+		 <a  href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 		 
 		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
-		</div> 
+		</div>
 		
 		<br></br>
 		<table>
-		 <br></br>
-		 
-		 <br></br>
+		<br>
+		<br>
+		<thead>
 		  <tr>
 		  	<th>ID</th>
-		    <th>DATE</th>
-		    <th>TIME</th>
+		  	<th>NAME</th>
+		    <th>EMAIL</th>
+		    <th>ADDRESS</th>
+		    <th>PASSWORD</th>
+		    <th>TELEPHONE NUMBER</th>
+		    <th>ADMIN ID</th>
 		    <th>ACTION</th>
-
-		    
 		  </tr>
+		 </thead>  
+		<tbody>
 		  <tr>
-		   <c:forEach items="${list}" var="b">  
-		   	<td>${b.getBookingID()}</td>
-			<td>${b.getBookingDate()}</td>
-			<td>${b.getBookingTime()}</td>
-			
+		   <c:forEach items="${list}" var="s">  
+		   	<td>${s.getStaffid()}</td>
+		   	<td>${s.getStaffname()}</td>
+			<td>${s.getStaffemail()}</td>
+			<td>${s.getStaffhomeno()}, ${s.getStaffaddress()}, ${s.getStaffcity()}, ${s.getStaffposcode()}, ${s.getStaffstate()}.</td>
+			<td>${s.getStaffpass()}</td>
+			<td>${s.getStafftelnum()}</td>
+			<td>${s.getAdminid()}</td>  
 			<td>
-			<a href="StaffViewBooking.jsp?bookingID=${b.getBookingID()}"><button class='edit'>VIEW</button> </a> </td>
+			<a href="StaffUpdate.jsp?staffid=${s.getStaffid()}"><button class='edit'>UPDATE</button> </a> 
 			
-			</td></tr>  
+			
+			</td>
+			</tr>  
 			</tbody>
 			</c:forEach> 
 		  
-		  <tr>
-		
-			
 		</table>
 		<br></br>
 	
-		<a style="float:left"href="staffAddBooking.jsp" button class="button button2">ADD BOOKING</button></a>
-		
-	
+		<a style="float:left"href="ServicerAdd.jsp" ><button class="button button2">ADD STAFF</button></a>
+
 </body>
 </html>
-

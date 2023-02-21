@@ -17,7 +17,7 @@
       let table = document.getElementById('table');
 
 			var request = new XMLHttpRequest();
-			request.open("GET", "https://microservices-2023.herokuapp.com/", true);
+			request.open("GET", "https://microservices-2023.herokuapp.com/getvalue", true);
 			request.onload = function() {
 				var stud_object = JSON.parse(this.response);
         stud_object.forEach(elem => {

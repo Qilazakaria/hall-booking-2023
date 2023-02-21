@@ -50,13 +50,15 @@
 		</main>
 		 -->
 		<div class="navbar"> 
-		 <a class="active" href="#"><i class="fa fa-home" class="split"></i> Home</a> 
-		 <a href="#"><i class="" class="split"></i> Assets</a> 
-		 <a href="#"><i class="" class="split"></i> Maintenance</a> 
-		 <a href="#"><i class="" class="split"></i> Servicer</a> 
-		 <a href="StaffListBooking.jsp"><i class="" class="split"></i> Booking</a> 
-		 <a href="#"><i class="fa fa-users" class="split"></i> Customer</a> 
-		   <li style="float:right"><a href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+		 <a class="active" href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
+		 <a href="StaffView.jsp"><i class="split"></i> Staff</a>
+		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
+		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
+		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
+		 <a href="ListAssets.jsp"><i class="" class="split"></i> Assets</a> 
+		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
+		 
+		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
 		</div> 
 		
 		<h1> Kompleks Japerun Duyong</h1>

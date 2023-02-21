@@ -50,7 +50,7 @@
 		</main>
 		 -->
 		<div class="navbar"> 
-		 <a class="active" href="#"><i class="fa fa-home" class="split"></i> Home</a> 
+		 <a class="active" href="#"><i class="split"></i> Home</a> 
 		 <a href="#"><i class="" class="split"></i> Booking</a> 
 		 <a href="#"><i class="" class="split"></i> Edit Profile</a> 
 		   <li style="float:right"><a href="CustomerLogin.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
