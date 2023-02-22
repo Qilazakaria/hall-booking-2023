@@ -79,6 +79,7 @@ public class CustomerController extends HttpServlet {
 			/* date1 = formatter.parse(request.getParameter("vec_rtdate")); */
 
 			//retrieve from HTML and set the values
+			customer.setCustid(Integer.parseInt(request.getParameter("custid")));
 			customer.setCustidentificationcard(request.getParameter("custidentificationcard"));
 			customer.setCustname(request.getParameter("custname"));
 			customer.setCusttelnum(request.getParameter("custtelnum"));
