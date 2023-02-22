@@ -78,7 +78,6 @@ public class AssetDAO {
 			ps.setString(6, voltageunit);
 			ps.setInt(7, assetsid);
 			
-			
 			//execute query
 			ps.executeUpdate();
 			System.out.println("Successfully inserted");
