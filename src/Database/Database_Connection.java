@@ -6,9 +6,9 @@ public class Database_Connection {
 	private static Connection connect;
 	
 	private static final String DB_DRIVER = "org.postgresql.Driver";
-	private static final String DB_CONNECTION = "jdbc:postgresql://ec2-34-194-73-236.compute-1.amazonaws.com:5432/dh6jb4b8j0cp6";
-	private static final String DB_USERNAME = "pasbivpbrzrvtt";
-	private static final String DB_PASSWORD = "3ca4c3f0167b8137b7bf38383ee29075f8df3b5c7e87a6cfc1859391d7ff89bd";
+	private static final String DB_CONNECTION = "jdbc:postgresql://ec2-52-71-69-66.compute-1.amazonaws.com:5432/d9l7lvmkdps1vc";
+	private static final String DB_USERNAME = "cyjarvvduwngrv";
+	private static final String DB_PASSWORD = "5741b3fdb3f8b805dd919e050a47b5292a5ce498da1a757e9f11dabaa7dfb5d4";
 	
 	public static Connection getConnection() {
 		try {
