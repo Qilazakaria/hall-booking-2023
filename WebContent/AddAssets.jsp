@@ -51,14 +51,14 @@
 	
 	<div class="form">
 		<form action="AssetsController" method="post">
-			<label for="assetsid">Asset Name: </label><br>
-    		<input type="text" id="assetsid" name="assetsid" value=""><br>
+			<label for="assetsid">Asset ID: </label><br>
+    		<input type="text" id="assetsid" name="assetsid" ><br>
 		
 			<label for="assetsname">Asset Name: </label><br>
-    		<input type="text" id="assetsname" name="assetsname" value=""><br>
+    		<input type="text" id="assetsname" name="assetsname" ><br>
     		
     		<label for="assetsquantity">Asset Quantity: </label><br>
-    		<input type="number" id="assetsquantity" name="assetsquantity" value=""><br>
+    		<input type="number" id="assetsquantity" name="assetsquantity" ><br>
     		
     		<label for="assetscategory">Asset Category: </label><br>
     		<select name="assetscategory">
@@ -68,13 +68,13 @@
     		<br>
     		
     		<label for="furnmaterial">Furniture Material: </label><br>
-    		<input type="text" id="furnmaterial" name="furnmaterial" value=""><br>
+    		<input type="text" id="furnmaterial" name="furnmaterial" ><br>
     		
     		<label for="electvoltage">Electrical Voltage: </label><br>
-    		<input type="text" id="electvoltage" name="electvoltage" value=""><br>
+    		<input type="text" id="electvoltage" name="electvoltage" ><br>
     		
     		<label for="voltageunit">Electrical Voltage Unit: </label><br>
-    		<input type="text" id="voltageunit" name="voltageunit" value=""><br>
+    		<input type="text" id="voltageunit" name="voltageunit" ><br>
    			<br>
    			<br>
 		  
