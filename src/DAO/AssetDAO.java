@@ -69,13 +69,14 @@ public class AssetDAO {
 			con = Database_Connection.getConnection() ;
 
 			//create statement
-			ps = con.prepareStatement("INSERT INTO assets(assetsname,assetsquantity,assetscategory,furnmaterial,electvoltage,voltageunit)VALUES(?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO assets(assetsname,assetsquantity,assetscategory,furnmaterial,electvoltage,voltageunit,assetsid)VALUES(?,?,?,?,?,?,?)");
 			ps.setString(1, assetsname);
 			ps.setInt(2, assetsquantity);
 			ps.setString(3, assetscategory);
 			ps.setString(4, furnmaterial);
 			ps.setString(5, electvoltage);
 			ps.setString(6, voltageunit);
+			ps.setInt(7, assetsid);
 			
 			
 			//execute query

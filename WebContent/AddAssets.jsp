@@ -51,6 +51,9 @@
 	
 	<div class="form">
 		<form action="AssetsController" method="post">
+			<label for="assetsid">Asset Name: </label><br>
+    		<input type="text" id="assetsid" name="assetsid" value=""><br>
+		
 			<label for="assetsname">Asset Name: </label><br>
     		<input type="text" id="assetsname" name="assetsname" value=""><br>
     		
