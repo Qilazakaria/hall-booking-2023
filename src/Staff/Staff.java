@@ -1,4 +1,4 @@
-package Model;
+package Staff;
 
 public class Staff {
 	private int staffid;

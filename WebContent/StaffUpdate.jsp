@@ -12,7 +12,7 @@
 <title>Staff Update Form</title>
 </head>
 <body>
-<%@page import="DAO.staffDAO,Model.Staff"%>  
+<%@page import="Staff.staffDAO,Staff.Staff"%>  
   
 <%  
 String staffid=request.getParameter("staffid");  

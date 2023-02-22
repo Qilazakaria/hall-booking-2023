@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 import Database.Database_Connection;
-import Model.Staff;
+import Staff.Staff;
 
 public class Staff_DAO {
 	private static Connection connect = null;

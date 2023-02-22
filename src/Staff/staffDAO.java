@@ -1,11 +1,10 @@
-package DAO;
+package Staff;
 
 import java.sql.*;  
 import java.util.ArrayList;
 import java.util.List;
 
 import Database.Database_Connection;
-import Model.Staff;
 
 public class staffDAO {
 		private static Connection con = null;

@@ -5,9 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import Model.Staff;
-
 import DAO.Staff_DAO;
+import Staff.Staff;
 
 @WebServlet("/Login_Servlet")
 public class Login_Servlet extends HttpServlet {
