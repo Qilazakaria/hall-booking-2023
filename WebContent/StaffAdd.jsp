@@ -68,8 +68,6 @@
   	<h2>REGISTER NEW STAFF ACCOUNT</h2>
   	
 	<br><br> 
-	<label for="staffid">ID: </label><br>
-    <input type="text"  name="staffid" id="staffid" required><br>
 	   
 	<label for="staffname">NAME: </label><br>
     <input type="text"  name="staffname" id="staffname" required><br>
