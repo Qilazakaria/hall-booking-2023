@@ -19,7 +19,7 @@ public class servicerDAO {
 	    try{  
 	    	con = Database_Connection.getConnection() ; 
 	        PreparedStatement ps=con.prepareStatement(  
-	"insert into servicer(servicerid,servicername,servicertelno,servicerhomeno,serviceraddress,servicercity,servicerpostcode,servicerstate) values(?,?,?,?,?,?,?,?)"); 
+	"insert into servicer(servicerid,servicername,servicertelno,servicerhomeno,serviceraddress,servicercity,servicerpostcode,servicerstate,servicerid) values(?,?,?,?,?,?,?,?,?)"); 
 	        ps.setInt(1,se.getServicerid());
 	        ps.setString(1,se.getServicername());
 	        ps.setString(2,se.getServicertelno());  
@@ -28,6 +28,7 @@ public class servicerDAO {
 	        ps.setString(5,se.getServicercity());
 	        ps.setInt(6,se.getServicerpostcode());
 	        ps.setString(7,se.getServicerstate()); 
+	        ps.setInt(8,se.getServicerid());
   
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
