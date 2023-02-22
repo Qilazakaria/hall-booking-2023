@@ -1,5 +1,5 @@
 <%@page import="Staff.staffDAO"%>  
-<jsp:useBean id="" class="w"></jsp:useBean>  
+<jsp:useBean id="s" class="Staff.Staff"></jsp:useBean>  
 <jsp:setProperty property="*" name="s"/>  
   
 <%  
