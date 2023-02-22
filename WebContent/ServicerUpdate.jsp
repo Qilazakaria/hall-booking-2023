@@ -60,7 +60,7 @@ servicer s=servicerDAO.getRecordById(Integer.parseInt(servicerid));
  
     
     <label for="servicerState">STATE: </label><br>
-    <select id="servicerState" name = "servicerState"  class = "custom-select" >
+    <select id="servicerstate" name = "servicerstate"  class = "custom-select" >
 		<option value="" ></option>	
 		<option value="JOHOR">JOHOR</option>
 		<option value="MELAKA">MELAKA</option>
