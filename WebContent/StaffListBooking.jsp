@@ -88,12 +88,12 @@ request.setAttribute("list",list);
 		  </tr>
 		  <tr>
 		   <c:forEach items="${list}" var="b">  
-		   	<td>${b.getBookingID()}</td>
-			<td>${b.getBookingDate()}</td>
-			<td>${b.getBookingTime()}</td>
+		   	<td>${b.getBookingid()}</td>
+			<td>${b.getBookingdate()}</td>
+			<td>${b.getBookingtime()}</td>
 			
 			<td>
-			<a href="StaffViewBooking.jsp?bookingID=${b.getBookingID()}"><button class='edit'>VIEW</button> </a> </td>
+			<a href="StaffViewBooking.jsp?bookingid=${b.getBookingid()}"><button class='edit'>VIEW</button> </a> </td>
 			
 			</td></tr>  
 			</tbody>
@@ -110,4 +110,3 @@ request.setAttribute("list",list);
 	
 </body>
 </html>
-

@@ -5,9 +5,10 @@ import java.util.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import Database.Database_Connection;
-import Model.Maintenance;
+import Model.Maintenances;
 
 public class MaintenanceDAO {
+	private static final Database_Connection ConnectionManager = null;
 	private static Connection con = null;
 	private static PreparedStatement ps = null;
 	private static Statement stmt = null;
@@ -21,11 +22,11 @@ public class MaintenanceDAO {
 	private int servicerid;
 	
 	//Complete getMaintenance() method
-	public static Maintenance getMaintenance(int mtnanceid) { 
-		Maintenance maintenance = new Maintenance();
+	public static Maintenances getMaintenance(int mtnanceid) { 
+		Maintenances maintenance = new Maintenances();
 		try {
 			//call getConnection() method
-			con = Database_Connection.getConnection() ;
+			con = Database_Connection.getConnection();
 
 			//create statement
 			ps = con.prepareStatement("SELECT * FROM maintenance WHERE mtnanceid=?");
@@ -52,7 +53,7 @@ public class MaintenanceDAO {
 	}
 	
 	//Complete addMaintenance() method
-	public void addMaintenance(Maintenance bean) {
+	public void addMaintenance(Maintenances bean) {
 				
 		//get values
 		mtnanceid = bean.getMtnanceid();
@@ -67,7 +68,7 @@ public class MaintenanceDAO {
 
 		try {			
 			//call getConnection() method
-			con = Database_Connection.getConnection() ;
+			con = Database_Connection.getConnection();
 
 			//create statement
 			ps = con.prepareStatement("INSERT INTO maintenance(mtnancelastdate,mtnancenextdate,mtnancedescription,assetsid,servicerid)VALUES(?,?,?,?,?)");
@@ -91,10 +92,10 @@ public class MaintenanceDAO {
 		}
 	}
 	//Complete deleteMaintenance() method
-	public void deleteMaintenance(int mtnanceid) {
+	public void deleteMaintenance(int mtnanceID) {
 		try {
 			//call getConnection() method 
-			con = Database_Connection.getConnection() ;
+			con = Database_Connection.getConnection();
 
 			//create statement 
 			ps = con.prepareStatement("DELETE FROM maintenance WHERE mtnanceid=?");
@@ -112,11 +113,11 @@ public class MaintenanceDAO {
 	}
 
 	//LIST METHOD
-	public static List<Maintenance> getMaintenances() { 
-		List<Maintenance> maintenances = new ArrayList<Maintenance>(); 
+	public static List<Maintenances> getMaintenances() { 
+		List<Maintenances> maintenances = new ArrayList<Maintenances>(); 
 		try { 
 			//call getConnection() method
-			con = Database_Connection.getConnection() ;
+			con = Database_Connection.getConnection();
 
 			//create statement
 			stmt = con.createStatement();
@@ -126,7 +127,7 @@ public class MaintenanceDAO {
 			rs = stmt.executeQuery(sql);
 					
 			while(rs.next()) {
-				Maintenance maintenance = new Maintenance();
+				Maintenances maintenance = new Maintenances();
 				maintenance.setMtnanceid(rs.getInt("mtnanceid"));
 				maintenance.setMtnancelastdate(rs.getDate("mtnancelastdate"));
 				maintenance.setMtnancenextdate(rs.getDate("mtnancenextdate"));
@@ -147,11 +148,11 @@ public class MaintenanceDAO {
 	}
 	
 	//LIST METHOD
-	public static List<Maintenance> getAddMaintenances() { 
-		List<Maintenance> addmaintenances = new ArrayList<Maintenance>(); 
+	public static List<Maintenances> getAddMaintenances() { 
+		List<Maintenances> addmaintenances = new ArrayList<Maintenances>(); 
 		try { 
 			//call getConnection() method
-			con = Database_Connection.getConnection() ;
+			con = Database_Connection.getConnection();
 
 			//create statement
 			stmt = con.createStatement();
@@ -161,7 +162,7 @@ public class MaintenanceDAO {
 			rs = stmt.executeQuery(sql);
 					
 			while(rs.next()) {
-				Maintenance maintenance = new Maintenance();
+				Maintenances maintenance = new Maintenances();
 				maintenance.setMtnanceid(rs.getInt("mtnanceid"));
 				maintenance.setMtnancelastdate(rs.getDate("mtnancelastdate"));
 				maintenance.setMtnancenextdate(rs.getDate("mtnancenextdate"));
@@ -183,7 +184,7 @@ public class MaintenanceDAO {
 	
 	//update 
 			
-		public void updateMaintenance(Maintenance bean) {
+		public void updateMaintenance(Maintenances bean) {
 					
 			mtnanceid = bean.getMtnanceid();
 			mtnancelastdate = bean.getMtnancelastdate();
@@ -199,7 +200,7 @@ public class MaintenanceDAO {
 			
 			try {			
 				//call getConnection() method
-				con = Database_Connection.getConnection() ;
+				con = ConnectionManager.getConnection();
 					
 				//3. create statement
 				ps = con.prepareStatement("UPDATE maintenance SET mtnancelastdate=?,mtnancenextdate=?,mtnancedescription=? WHERE mtnanceid=?");

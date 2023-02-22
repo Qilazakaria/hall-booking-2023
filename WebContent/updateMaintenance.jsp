@@ -5,27 +5,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta charset="ISO-8859-1">
 <title>Update Maintenance Detail</title>
 </head>
-<meta charset="ISO-8859-1">
-<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
-<link href="assets/css/staffadd.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="assets/css/customernavigation.css"> 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
- 
+<link href="css/bookingForm.css" rel="stylesheet" type="text/css">
+<link href="css/ABooking.css" rel="stylesheet" type="text/css">
+<link href="css/customernavigation.css" rel="stylesheet" type="text/css">
 <body>
- <div class="navbar"> 
-		 <a href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
-		 <a href="StaffView.jsp"><i class="split"></i> Staff</a>
-		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
-		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
-		 <a class="active" href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
-		 <a  href="AssetsController?action=list"><i class="" class="split"></i> Assets</a> 
-		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
-		 
-		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
-		</div>
+<div class="navbar"> 
+	 <a href="#"><i class="fa fa-home" class="split"></i> Home</a> 
+	 <a href="#"><i class="" class="split"></i> Assets</a> 
+	 <a href="#"><i class="active" class="split"></i> Maintenance</a> 
+	 <a href="#"><i class="" class="split"></i> Servicer</a> 
+	 <a href="#"><i class="" class="split"></i> Booking</a> 
+	 <a class="" href="#"><i class="fa fa-users" class="split"></i> Staff</a>
+	 <a href="#"><i class="fa fa-users" class="split"></i> Customer</a> 
+   <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+</div>
 <h2>Update Maintenance</h2>
 <div class="form">
  <form action="UpdateMaintenanceController" method="POST" id="wizard"> 

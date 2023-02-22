@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.AssetDAO;
 import DAO.MaintenanceDAO;
 import Servicer.servicerDAO;
-import Model.Maintenance;
+import Model.Maintenances;
 import Model.Assets;
 import Servicer.servicer;
 
@@ -54,8 +54,8 @@ public class UpdateMaintenanceController extends HttpServlet {
 			request.setAttribute("list", servicerDAO.getAllRecords());
 			forward = UPDATE;
 			}
-		int mtnanceID = Integer.parseInt(request.getParameter("mtnanceID"));
-		request.setAttribute("maintenance", MaintenanceDAO.getMaintenance(mtnanceID));
+		int mtnanceid = Integer.parseInt(request.getParameter("mtnanceid"));
+		request.setAttribute("maintenance", MaintenanceDAO.getMaintenance(mtnanceid));
 		RequestDispatcher view = request.getRequestDispatcher("UpdateMaintenance.jsp");
 		view.forward(request, response);
 	}
@@ -71,18 +71,18 @@ public class UpdateMaintenanceController extends HttpServlet {
 //		int assetsID = Integer.parseInt(request.getParameter("assetsID"));
 //	    int servicerID = Integer.parseInt(request.getParameter("servicerID"));
 		try {
-			date1 = formatter.parse(request.getParameter("mtnanceLastDate"));
-			date2 = formatter.parse(request.getParameter("mtnanceNextDate"));
+			date1 = formatter.parse(request.getParameter("mtnancelastdate"));
+			date2 = formatter.parse(request.getParameter("mtnancenextdate"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		Maintenance maintenance = new Maintenance();
-		maintenance.setMtnanceid(Integer.parseInt(request.getParameter("mtnanceID")));
+		Maintenances maintenance = new Maintenances();
+		maintenance.setMtnanceid(Integer.parseInt(request.getParameter("mtnanceid")));
 		maintenance.setMtnancelastdate(date1);
 		maintenance.setMtnancenextdate(date2);
-		maintenance.setMtnancedescription(request.getParameter("mtnanceDescription"));
+		maintenance.setMtnancedescription(request.getParameter("mtnancedescription"));
 //		maintenance.setAssetsID(assetsID);
 //	    maintenance.setServicerID(servicerID);
 		dao.updateMaintenance(maintenance);

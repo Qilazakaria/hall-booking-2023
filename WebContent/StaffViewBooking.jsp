@@ -56,8 +56,8 @@
   
 <%@page import="DAO.bookingDao,Model.booking"%>
 <%  
-int bookingID = Integer.parseInt(request.getParameter("bookingID"));
-booking b = bookingDao.getRecordById(bookingID);
+int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+booking b = bookingDao.getRecordById(bookingid);
 %>      
  
 
@@ -88,12 +88,12 @@ booking b = bookingDao.getRecordById(bookingID);
 		    
 		  </tr>
 		  <tr>
-		    <td><%= b.getBookingID() %></td>
-		    <td><%= b.getBookingDate() %></td>
-		    <td><%= b.getBookingTime() %></td>
-		    <td><%= b.getBookingDescription() %></td>
-		    <td><%= b.getBookingEstimateCapacity() %></td>
-		    <td><%= b.getBookingPrice() %></td>
+		    <td><%= b.getBookingid() %></td>
+		    <td><%= b.getBookingdate() %></td>
+		    <td><%= b.getBookingtime() %></td>
+		    <td><%= b.getBookingdescription() %></td>
+		    <td><%= b.getBookingestimatecapacity() %></td>
+		    <td><%= b.getBookingprice() %></td>
 		  </tr>
 		
 			

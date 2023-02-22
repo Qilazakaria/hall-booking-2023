@@ -5,94 +5,64 @@ import java.util.Date;
 
 public class booking {
 	
-    private int bookingID;
-    private Date bookingDate;
-    private Time bookingTime;
-    private String bookingDescription;
-    private int bookingEstimateCapacity;
-    private float bookingPrice;
-    private int staffID;
-    private int custID;
+	private int bookingid;
+	private Date bookingdate;
+	private String bookingtime;
+	private String bookingdescription;
+	private int bookingestimatecapacity;
+	private int bookingprice;
+	private int staffid;
+	private int custid;
+	public int getBookingid() {
+		return bookingid;
+	}
+	public void setBookingid(int bookingid) {
+		this.bookingid = bookingid;
+	}
+	public Date getBookingdate() {
+		return bookingdate;
+	}
+	public void setBookingdate(Date bookingdate) {
+		this.bookingdate = bookingdate;
+	}
+	public String getBookingtime() {
+		return bookingtime;
+	}
+	public void setBookingtime(String bookingtime) {
+		this.bookingtime = bookingtime;
+	}
+	public String getBookingdescription() {
+		return bookingdescription;
+	}
+	public void setBookingdescription(String bookingdescription) {
+		this.bookingdescription = bookingdescription;
+	}
+	public int getBookingestimatecapacity() {
+		return bookingestimatecapacity;
+	}
+	public void setBookingestimatecapacity(int bookingestimatecapacity) {
+		this.bookingestimatecapacity = bookingestimatecapacity;
+	}
+	public int getBookingprice() {
+		return bookingprice;
+	}
+	public void setBookingprice(int bookingprice) {
+		this.bookingprice = bookingprice;
+	}
+	public int getStaffid() {
+		return staffid;
+	}
+	public void setStaffid(int staffid) {
+		this.staffid = staffid;
+	}
+	public int getCustid() {
+		return custid;
+	}
+	public void setCustid(int custid) {
+		this.custid = custid;
+	}
+	
     
-    public booking()
-   	{
-   		
-   	}
-       
-       public booking(int bookingID, Date bookingDate, Time bookingTime, String bookingDescription,int bookingEstimateCapacity,float bookingPrice,int staffID,int custID) 
-   	{
-   		this.bookingID = bookingID;
-   		this.bookingDate = bookingDate;
-   		this.bookingTime = bookingTime;
-   		this.bookingDescription = bookingDescription;
-   		this.bookingEstimateCapacity = bookingEstimateCapacity;
-   		this.bookingPrice = bookingPrice;
-   		this.staffID = staffID;
-   		this.custID = custID;
-   	}
-
-	public int getBookingID() {
-		return bookingID;
-	}
-
-	public void setBookingID(int bookingID) {
-		this.bookingID = bookingID;
-	}
-
-	public Date getBookingDate() {
-		return bookingDate;
-	}
-
-	public void setBookingDate(Date bookingDate) {
-		this.bookingDate = bookingDate;
-	}
-
-	public Time getBookingTime() {
-		return bookingTime;
-	}
-
-	public void setBookingTime(Time bookingTime) {
-		this.bookingTime = bookingTime;
-	}
-
-	public String getBookingDescription() {
-		return bookingDescription;
-	}
-
-	public void setBookingDescription(String bookingDescription) {
-		this.bookingDescription = bookingDescription;
-	}
-
-	public int getBookingEstimateCapacity() {
-		return bookingEstimateCapacity;
-	}
-
-	public void setBookingEstimateCapacity(int bookingEstimateCapacity) {
-		this.bookingEstimateCapacity = bookingEstimateCapacity;
-	}
-
-	public float getBookingPrice() {
-		return bookingPrice;
-	}
-
-	public void setBookingPrice(float bookingPrice) {
-		this.bookingPrice = bookingPrice;
-	}
-
-	public int getStaffID() {
-		return staffID;
-	}
-
-	public void setStaffID(int staffID) {
-		this.staffID = staffID;
-	}
-
-	public int getCustID() {
-		return custID;
-	}
-
-	public void setCustID(int custID) {
-		this.custID = custID;
-	}
+   
     
 }

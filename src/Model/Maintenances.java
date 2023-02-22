@@ -2,9 +2,9 @@ package Model;
 
 import java.util.Date;
 
-public class Maintenance {
+public class Maintenances {
 	
-	public Maintenance() {
+	public Maintenances() {
 		
 	}
 	
@@ -15,7 +15,7 @@ public class Maintenance {
 	private int assetsid;
 	private int servicerid;
 	
-	public Maintenance(int mtnanceid, Date mtnancelastdate, Date mtnancenextdate, String mtnancedescription,
+	public Maintenances(int mtnanceid, Date mtnancelastdate, Date mtnancenextdate, String mtnancedescription,
 			int assetsid, int servicerid) {
 		super();
 		this.mtnanceid = mtnanceid;

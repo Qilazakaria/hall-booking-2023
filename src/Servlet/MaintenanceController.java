@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import DAO.MaintenanceDAO;
-import Model.Maintenance;
+import Model.Maintenances;
 import Servicer.servicerDAO;
 import DAO.AssetDAO;
 import java.text.SimpleDateFormat;
@@ -91,7 +91,7 @@ public class MaintenanceController extends HttpServlet {
 		java.util.Date date2;
 	 		
 		try {
-			Maintenance maintenance = new Maintenance();
+			Maintenances maintenance = new Maintenances();
 			date1 = formatter.parse(request.getParameter("mtnancelastdate"));
 			date2 = formatter.parse(request.getParameter("mtnancenextdate"));
 //		    int assetsID = Integer.parseInt(request.getParameter("assetsID"));
@@ -103,7 +103,7 @@ public class MaintenanceController extends HttpServlet {
 			//retrieve from HTML and set the values
 		    maintenance.setMtnancelastdate(date1);
 		    maintenance.setMtnancenextdate(date2);
-		    maintenance.setMtnancedescription(request.getParameter("mtnanceDescription"));
+		    maintenance.setMtnancedescription(request.getParameter("mtnancedescription"));
 		    maintenance.setAssetsid(assetsid);
 		    maintenance.setServicerid(servicerid);
 

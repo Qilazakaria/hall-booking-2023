@@ -54,7 +54,7 @@
 		 <a href="StaffView.jsp"><i class="split"></i> Staff</a>
 		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
 		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
-		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
+		 <a href="staffListMaintenance.jsp?action=list"><i class="" class="split"></i> Maintenance</a>
 		 <a href="ListAssets.jsp"><i class="" class="split"></i> Assets</a> 
 		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 		 
