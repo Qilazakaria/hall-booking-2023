@@ -18,7 +18,7 @@ public class staffDAO {
 	    try{  
 	    	con = Database_Connection.getConnection() ; 
 	        PreparedStatement ps=con.prepareStatement(  
-	"insert into staff(staffname,staffemail,staffhomeno,staffaddress,staffcity,staffposcode,staffstate,staffpass,stafftelnum,adminid) values(?,?,?,?,?,?,?,?,?,?)"); 
+	"insert into staff(staffid,staffname,staffemail,staffhomeno,staffaddress,staffcity,staffposcode,staffstate,staffpass,stafftelnum,adminid) values(?,?,?,?,?,?,?,?,?,?)"); 
 	        ps.setString(1,s.getStaffname());
 	        ps.setString(2,s.getStaffemail());
 	        ps.setInt(3,s.getStaffhomeno());
@@ -29,6 +29,7 @@ public class staffDAO {
 	        ps.setString(8,s.getStaffpass());  
 	        ps.setString(9,s.getStafftelnum());  
 	        ps.setInt(10,s.getAdminid());  
+	        ps.setInt(11,s.getStaffid());
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	    return status;  
