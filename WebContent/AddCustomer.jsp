@@ -44,8 +44,8 @@
 	<div class="form">
 		<form action="CustomerController" method="post" id="wizard">
 	
-	<!-- <label for="custid">Customer ID</label>
-	<input type="text" id="custid" name="custid" placeholder="custid"><br><br> -->
+	<label for="custid">Customer ID</label>
+	<input type="text" id="custid" name="custid" placeholder="custid"><br><br>
 	
 	<label for="custidentificationcard">Ic Number</label>
     <input type="text" id="custidentificationcard" name="custidentificationcard" placeholder="Cust Identitification Card"><br><br>

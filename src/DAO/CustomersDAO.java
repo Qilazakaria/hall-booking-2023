@@ -83,7 +83,7 @@ public class CustomersDAO {
 			con = Database_Connection.getConnection() ;
 
 			//create statement
-			ps = con.prepareStatement("INSERT INTO customer(custidentificationcard,custname,custtelnum,custhomeno,custaddress,custcity,custpostcode,custstate,custemail,custpass)VALUES(?,?,?,?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO customer(custidentificationcard,custname,custtelnum,custhomeno,custaddress,custcity,custpostcode,custstate,custemail,custpass,custid)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(1, custidentificationcard);
 			ps.setString(2, custname);
 			ps.setString(3, custtelnum);
@@ -94,6 +94,7 @@ public class CustomersDAO {
 			ps.setString(8, custstate);
 			ps.setString(9, custemail);
 			ps.setString(10, custpass);
+			ps.setInt(11, custid);
 			
 			
 			//execute query
