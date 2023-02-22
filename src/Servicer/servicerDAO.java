@@ -19,7 +19,8 @@ public class servicerDAO {
 	    try{  
 	    	con = Database_Connection.getConnection() ; 
 	        PreparedStatement ps=con.prepareStatement(  
-	"insert into servicer(servicername,servicertelno,servicerhomeno,serviceraddress,servicercity,servicerpostcode,servicerstate) values(?,?,?,?,?,?,?)"); 
+	"insert into servicer(servicerid,servicername,servicertelno,servicerhomeno,serviceraddress,servicercity,servicerpostcode,servicerstate) values(?,?,?,?,?,?,?,?)"); 
+	        ps.setInt(1,se.getServicerid());
 	        ps.setString(1,se.getServicername());
 	        ps.setString(2,se.getServicertelno());  
 	        ps.setInt(3,se.getServicerhomeno());

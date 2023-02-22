@@ -28,6 +28,9 @@
   	<h2>REGISTER NEW SERVICER</h2>
   	
 	<br><br>    
+	<label for="servicername">ID: </label><br>
+    <input type="text"  name="servicerid" id="servicerid" required><br><br>
+	
 	<label for="servicername">NAME: </label><br>
     <input type="text"  name="servicername" id="servicername" required><br><br>
     
