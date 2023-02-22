@@ -116,7 +116,7 @@ public class AssetDAO {
 
 			//create statement
 			stmt = con.createStatement();
-			String sql = "SELECT * FROM assets ORDER BY assetsid";
+			String sql = "SELECT * FROM assets";
 
 			//execute query
 			rs = stmt.executeQuery(sql);
