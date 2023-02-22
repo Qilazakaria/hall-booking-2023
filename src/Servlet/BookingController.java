@@ -49,7 +49,7 @@ public class BookingController extends HttpServlet {
 		// for all order have been inserted
 		if(action.equalsIgnoreCase("list")) {
 			forward = LIST;
-			request.setAttribute("books", bookingDao.getBookings());
+			request.setAttribute("books", bookingDao.getAllRecords());
 		}
 
 		//Complete action for delete order
@@ -101,7 +101,7 @@ public class BookingController extends HttpServlet {
 					}
 					
 					//set attribute to a servlet request and call getVehicles() method
-					request.setAttribute("books", bookingDao.getBookings());
+					request.setAttribute("books", bookingDao.getAllRecords());
 					
 				}catch(Exception e) {
 					e.printStackTrace();
