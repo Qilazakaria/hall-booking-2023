@@ -70,7 +70,7 @@ booking b = bookingDao.getRecordById(bookingid);
 		 <a href=""><i class="" class="split"></i> Assets</a> 
 		 <a class="active" href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 		 
-		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+		 <li style="float:right"><a href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
 		</div>
 		
 		<br></br>

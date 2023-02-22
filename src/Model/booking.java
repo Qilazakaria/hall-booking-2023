@@ -13,6 +13,24 @@ public class booking {
 	private int bookingprice;
 	private int staffid;
 	private int custid;
+	
+	public booking() {
+		
+	}
+	
+	public booking(int bookingid, Date bookingdate, String bookingtime, String bookingdescription,
+			int bookingestimatecapacity, int bookingprice, int staffid, int custid) {
+		super();
+		this.bookingid = bookingid;
+		this.bookingdate = bookingdate;
+		this.bookingtime = bookingtime;
+		this.bookingdescription = bookingdescription;
+		this.bookingestimatecapacity = bookingestimatecapacity;
+		this.bookingprice = bookingprice;
+		this.staffid = staffid;
+		this.custid = custid;
+	}
+	
 	public int getBookingid() {
 		return bookingid;
 	}

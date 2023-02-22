@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c"  
+   uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +72,7 @@ request.setAttribute("list",list);
 		 <a href="AssetsController?action=list"><i class="" class="split"></i> Assets</a> 
 		 <a class="active" href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 		 
-		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+		 <li style="float:right"><a href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
 		</div> 
 		
 		

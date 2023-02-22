@@ -58,7 +58,7 @@
 		 <a href="ListAssets.jsp"><i class="" class="split"></i> Assets</a> 
 		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 		 
-		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+		 <li style="float:right"><a href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
 		</div> 
 		
 		<h1> Kompleks Japerun Duyong</h1>
