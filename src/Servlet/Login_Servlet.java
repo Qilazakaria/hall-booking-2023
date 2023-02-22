@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import DAO.Staff_DAO;
-import Staff.Staff;
+import staff.Staff;
 
 @WebServlet("/Login_Servlet")
 public class Login_Servlet extends HttpServlet {

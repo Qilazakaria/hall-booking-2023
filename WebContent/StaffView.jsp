@@ -53,7 +53,7 @@
 	}
 	</style>
 <body>
-<%@page import="Staff.staffDAO,Staff.Staff,java.util.*"%>
+<%@page import="staff.staffDAO,staff.Staff,java.util.*"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>  
    
 <%  

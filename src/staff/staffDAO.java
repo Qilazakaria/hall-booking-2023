@@ -1,4 +1,4 @@
-package Staff;
+package staff;
 
 import java.sql.*;  
 import java.util.ArrayList;
