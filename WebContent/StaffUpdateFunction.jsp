@@ -4,4 +4,4 @@
 <%  
 int i=staffDAO.update(s);  
 response.sendRedirect("StaffView.jsp");  
-%> 
+%>     
