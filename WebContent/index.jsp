@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -23,7 +24,7 @@
 	</head>
 <body> 
     <div class="center">
-        <h1>ADMIN LOGIN</h1>
+        <h1>admin LOGIN</h1>
         <form action="Login_Servlet" method="post">
             <div class="txt_field">
                 <input type="text" placeholder="Username" name="username" required>
