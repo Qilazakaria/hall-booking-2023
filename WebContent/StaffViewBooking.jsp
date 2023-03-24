@@ -54,11 +54,13 @@
 		
 <body>
   
-<%@page import="DAO.bookingDao,Model.booking"%>
+ <%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
 <%  
 int bookingid = Integer.parseInt(request.getParameter("bookingid"));
-booking b = bookingDao.getRecordById(bookingid);
+Booking b = bookingDAO.getRecordById(bookingid);
 %>      
+ 
+ 
  
 
 <div class="navbar"> 

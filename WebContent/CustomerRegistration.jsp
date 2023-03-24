@@ -24,7 +24,7 @@
 <body>
     <div class="center">
         <h1>CUSTOMER SIGNUP</h1>
-        <form action="CustomerRegistrationProcess.jsp" method="post">
+        <form action="CustomerRegistrationProcess" method="post">
             <div class="txt_field">
                 <input type="text" placeholder="Identification Card" name="custidentificationcard" required>
          

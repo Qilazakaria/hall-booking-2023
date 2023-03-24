@@ -55,13 +55,14 @@
 	</style>
 		
 <body>
-<%@page import="DAO.bookingDao,Model.booking,java.util.*"%>
+
+<%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>  
    
 <%  
-List<booking> list=bookingDao.getAllRecords();  
+List<Booking> list=bookingDAO.getAllRecords();  
 request.setAttribute("list",list);  
-%>  
+%> 
 
 <div class="navbar"> 
 		 <a href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
@@ -96,18 +97,17 @@ request.setAttribute("list",list);
 			
 			<td>
 			<a href="StaffViewBooking.jsp?bookingid=${b.getBookingid()}"><button class='edit'>VIEW</button> </a> </td>
-			
-			</td></tr>  
+
+
+			</td>
+			</tr>  
 			</tbody>
 			</c:forEach> 
 		  
-		  <tr>
-		
-			
-		</table>
+		  </table>
 		<br></br>
 	
-		<a style="float:left"href="staffAddBooking.jsp" button class="button button2">ADD BOOKING</button></a>
+		<a style="float:left"href="StaffAddBooking.jsp" button class="button button2">ADD BOOKING</button></a>
 		
 	
 </body>

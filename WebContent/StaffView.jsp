@@ -61,6 +61,7 @@ List<Staff> list=staffDAO.getAllRecords();
 request.setAttribute("list",list);  
 %> 
 
+
 	<div class="navbar"> 
 		 <a href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
 		 <a class="active" href="StaffView.jsp"><i class="split"></i> Staff</a>
