@@ -67,7 +67,7 @@
 	<div class="container" style=text-align:center>
   	<form action="StaffAddBookingFunction.jsp" method="post" id="wizard">
 	<h1>Register Booking</h1>
-	<div class="form"> 
+	<div class="form">   
 	
 			<br><br> 
 			<label for="bookingid">ID: <br>
