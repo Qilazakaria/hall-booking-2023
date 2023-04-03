@@ -18,7 +18,7 @@ public class bookingDAO {
 	    try{  
 	    	con = Database_Connection.getConnection() ; 
 	        PreparedStatement ps=con.prepareStatement(  
-	"insert into bookinghall(bookingdate,bookingtime,bookingdescription,bookingestimatecapacity,bookingprice,staffidbookingid) values(?,?,?,?,?,?,?)"); 
+	"insert into bookinghall(bookingdate,bookingtime,bookingdescription,bookingestimatecapacity,bookingprice,staffid,bookingid) values(?,?,?,?,?,?,?)"); 
 	        ps.setString(1,b.getBookingdate());
 	        ps.setString(2,b.getBookingtime());
 	        ps.setString(3,b.getBookingdescription());
