@@ -39,7 +39,7 @@ servicer s=servicerDAO.getRecordById(Integer.parseInt(servicerid));
 	<label for="servicername">NAME: </label><br>
     <input type="text"  name="servicername" value="<%=s.getServicername() %>" ><br><br>
     
-    <label for="servicertelno">EMAIL:</label><br>
+    <label for="servicertelno">TELEHONE NUMBER:</label><br>
     <input type="text"  name="servicertelno" value="<%=s.getServicertelno() %>" ><br><br>
 
     
