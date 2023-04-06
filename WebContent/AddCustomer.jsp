@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="customernavigation.css" rel="stylesheet" type="text/css">
+<link href="assets/css/customernavigation.css" rel="stylesheet" type="text/css">
 
 <title>Add Customer</title>
 </head>
@@ -18,7 +18,7 @@
  <a href="#" class="active"><i class="" class="split"></i> Customer</a> 
  <a href="#"><i class="" class="split"></i> Servicer</a> 
  <a class="" href="#"><i class="" class="split"></i> Maintenance</a> 
- <a href="#" ><i class="fa fa-users" class="split"></i> Assets</a> 
+ <a href="#" ><i  class="split"></i> Assets</a> 
   <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a>
 </div>
 
