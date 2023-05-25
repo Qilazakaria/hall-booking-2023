@@ -48,9 +48,9 @@
             </div>
             <div class="signup_link">
                
-                <input type="submit" value="Login">
+                <input type="submit" value="Sign Up">
                 <br>
-                <a href="staffLogin.jsp">Login as staff</a>
+                <a href="index.jsp">Login as staff</a>
             </div>
             
         </form>
