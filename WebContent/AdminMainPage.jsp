@@ -61,7 +61,7 @@
 		 <li style="float:right"><a href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
 		</div> 
 		
-		<h1> Kompleks Japerun Duyong</h1>
+		<h1> Kompleks Japerun Duyong, Melaka</h1>
 		<br>
 		<h3> No 3123-1, KM 5 Lebuh AMJ, Taman Semabok Emas 75050 Melaka.</h3>
 	 	<br>
