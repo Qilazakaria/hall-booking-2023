@@ -6,6 +6,7 @@ import java.util.List;
 
 import Database.Database_Connection;
 
+
 public class bookingDAO {
 		private static Connection con = null;
 		private static PreparedStatement ps = null;
@@ -31,6 +32,23 @@ public class bookingDAO {
 	    return status;  
 	}
 	
+	public static int update(Booking b){  
+	    int status=0;  
+	    try{  
+	    	con = Database_Connection.getConnection() ;  
+	        PreparedStatement ps=con.prepareStatement(  
+	        "update bookinghall set bookingdate=?,bookingtime=?,bookingdescription=?,bookingestimatecapacity=?,bookingprice=? where bookingid=?");  
+	        ps.setString(1,b.getBookingdate());
+	        ps.setString(2,b.getBookingtime());
+	        ps.setString(3,b.getBookingdescription());
+	        ps.setInt(4,b.getBookingestimatecapacity());
+	        ps.setInt(5,b.getBookingprice());
+	        ps.setInt(6,b.getBookingid());
+	        status=ps.executeUpdate();  
+	    }catch(Exception e){System.out.println(e);}  
+	    return status;  
+	}
+	
 	public static List<Booking> getAllRecords(){  
 	    List<Booking> list=new ArrayList<Booking>();  
 	      
@@ -48,6 +66,36 @@ public class bookingDAO {
 	    }catch(Exception e){System.out.println(e);}  
 	    return list;  
 	}
+	
+    public static List<Booking> getRecordsById(int bookingId) {
+        List<Booking> list = new ArrayList<>();
+        
+        try {
+            con = Database_Connection.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM bookinghall WHERE bookingid=?");
+            ps.setInt(1, bookingId);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Booking b = new Booking();
+                b.setBookingid(rs.getInt("bookingid"));
+                b.setBookingdate(rs.getString("bookingdate"));
+                b.setBookingtime(rs.getString("bookingtime"));
+                b.setBookingdescription(rs.getString("bookingdescription"));
+                b.setBookingestimatecapacity(rs.getInt("bookingestimatecapacity"));
+                b.setBookingprice(rs.getInt("bookingprice"));
+                b.setCustid(rs.getInt("custid"));
+                b.setStaffid(rs.getInt("staffid"));
+                
+                list.add(b);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return list;
+    }
+    
 	public static Booking getRecordById(int bookingid){  
 		Booking b=null;  
 	    try{  

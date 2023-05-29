@@ -87,20 +87,26 @@ Booking b = bookingDAO.getRecordById(bookingid);
 		    <th>DESCRIPTION</th>
 		    <th>CAPACITY</th>
 		    <th>PRICE</th>
+		    <th>ACTION</th>
 		    
 		  </tr>
 		  <tr>
+		  
 		    <td><%= b.getBookingid() %></td>
 		    <td><%= b.getBookingdate() %></td>
 		    <td><%= b.getBookingtime() %></td>
 		    <td><%= b.getBookingdescription() %></td>
 		    <td><%= b.getBookingestimatecapacity() %></td>
 		    <td><%= b.getBookingprice() %></td>
+		    <td> <a href="StaffUpdateBooking.jsp?bookingid=<%= b.getBookingid() %>"><button class='edit'>UPDATE</button></a> </td>
+		    
 		  </tr>
 		
 			
 		</table>
 		<br></br>
+		
+		
 			
 <a style="float:left"href="StaffListBooking.jsp" button class="button button2">BACK</button></a>
 	
