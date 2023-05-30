@@ -13,12 +13,13 @@
 <body>
 
 <div class="navbar">
- <a href="#"><i class="fa fa-home" class="split"></i> Home</a> 
+  <a href="#"><i class="" class="split"></i> Home</a> 
  <a href="#"><i class="" class="split"></i> Staff</a> 
- <a href="#" class="active"><i class="" class="split"></i> Customer</a> 
+ <a href="#" ><i class="class="active" class="split"></i> Customer</a> 
  <a href="#"><i class="" class="split"></i> Servicer</a> 
  <a class="" href="#"><i class="" class="split"></i> Maintenance</a> 
- <a href="#" ><i  class="split"></i> Assets</a> 
+ <a href="#" ><i class="" class="split"></i>Assets</a>
+  <a href="#" ><i class="" class="split"></i>Booking</a>
   <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a>
 </div>
 
