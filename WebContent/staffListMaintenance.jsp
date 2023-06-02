@@ -60,7 +60,7 @@
 		 <a class="" href="StaffView.jsp"><i class="split"></i> Staff</a>
 		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
 		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
-		 <a href="staffListMaintenance.jsp"><i class="active" class="split"></i> Maintenance</a>
+		 <a href="MaintenanceController?action=list"><i class="active" class="split"></i> Maintenance</a>
 		 <a href="AssetsController?action=list"><i class="" class="split"></i> Assets</a> 
 		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 		 
