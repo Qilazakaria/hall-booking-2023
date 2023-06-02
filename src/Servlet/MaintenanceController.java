@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 /**
  * Servlet implementation class MaintenanceController
  */
+@WebServlet ("/MaintenanceController")
 public class MaintenanceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String action="", forward="";
