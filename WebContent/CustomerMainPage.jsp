@@ -51,7 +51,7 @@
 		 -->
 		<div class="navbar"> 
 		 <a class="active" href="#"><i class="split"></i> Home</a> 
-		 <a href="BookingController?action=list"><i class="" class="split"></i> Booking</a>
+		 <a href="CustomerViewBooking.jsp"><i class="" class="split"></i> Booking</a>
 		 <a href="CustomerRegisterBooking.jsp"><i class="" class="split"></i> Add Booking</a> 
 		 <a href="#"><i class="" class="split"></i> Edit Profile</a> 
 		   <li style="float:right"><a href="CustomerLogin.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 

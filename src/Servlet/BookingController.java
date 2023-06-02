@@ -7,20 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import DAO.bookingDao;
+import booking.bookingDAO;
 import Model.booking;
 import java.text.SimpleDateFormat;
 
 /**
  * Servlet implementation class CustomerController
  */
+@WebServlet ("/BookingController")
 public class BookingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String action="", forward="";
 	private static String LIST ="CustomerViewBooking.jsp";
 	private static String VIEW ="ViewVehicle.jsp";
 	private static String UPDATE ="UpdateVehicle.jsp";
-	private bookingDao dao;
+	private bookingDAO dao;
 	private int bookingid;
        
     /**
@@ -28,7 +29,7 @@ public class BookingController extends HttpServlet {
      */
     public BookingController() {
         super();
-        dao = new bookingDao();
+        dao = new bookingDAO();
         // TODO Auto-generated constructor stub
     }
 
@@ -49,7 +50,7 @@ public class BookingController extends HttpServlet {
 		// for all order have been inserted
 		if(action.equalsIgnoreCase("list")) {
 			forward = LIST;
-			request.setAttribute("books", bookingDao.getAllRecords());
+			request.setAttribute("list",bookingDAO.getAllRecords());
 		}
 
 		//Complete action for delete order
@@ -97,11 +98,11 @@ public class BookingController extends HttpServlet {
 					String bookingid = request.getParameter("bookingid");
 					
 					if(bookingid == null || bookingid.isEmpty()) {
-						dao.addBooking(book);
+						//dao.save(boo);
 					}
 					
 					//set attribute to a servlet request and call getVehicles() method
-					request.setAttribute("books", bookingDao.getAllRecords());
+					request.setAttribute("list", bookingDAO.getAllRecords());
 					
 				}catch(Exception e) {
 					e.printStackTrace();
