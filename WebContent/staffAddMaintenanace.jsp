@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +46,7 @@
     		<label align=left for="assetsid">Asset ID:
     		<select name="assetsid">
     		<c:forEach items="${assets}" var="asset">
-            <option value="${asset.assetsid}">${asset.assetsname}</option>
+            <option value="${asset.assetsid}">${asset.assetsName}</option>
         	</c:forEach>
         	</select>
     		</label>
@@ -55,7 +54,7 @@
     		<label align=left for="servicerid">Servicer ID:
     		<select name="servicerid">
     		<c:forEach items="${list}" var="servicer"> 
-    		<option value="${servicer.servicerid}">${servicer.servicername}</option>
+    		<option value="${servicer.servicerid}">${servicer.servicerName}</option>
     		</c:forEach>
     		</select>
     		</label>

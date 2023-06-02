@@ -23,7 +23,7 @@ public class MaintenanceController extends HttpServlet {
 	private static String LIST ="staffListMaintenance.jsp";
 	private static String VIEW ="ViewMaintenance.jsp";
 	private static String UPDATE ="UpdateMaintenace.jsp";
-	private static String ADD = "staffAddMaintenance.jsp";
+	private static String ADD = "staffAddMaintenanace.jsp";
 	private MaintenanceDAO dao;
 	private int mtnanceid;
     /**
