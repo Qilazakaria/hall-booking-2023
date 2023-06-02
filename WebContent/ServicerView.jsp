@@ -66,7 +66,7 @@ request.setAttribute("list",list);
 		 <a href="StaffView.jsp"><i class="split"></i> Staff</a>
 		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
 		 <a class="active" href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
-		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
+		 <a href="MaintenanceController?action=list"><i class="" class="split"></i> Maintenance</a>
 		 <a href="AssetsController?action=list"><i class="" class="split"></i> Assets</a> 
 		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
 		 
