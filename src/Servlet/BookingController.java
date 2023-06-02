@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 public class BookingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String action="", forward="";
-	private static String LIST ="StaffListBooking.jsp";
+	private static String LIST ="CustomerViewBooking.jsp";
 	private static String VIEW ="ViewVehicle.jsp";
 	private static String UPDATE ="UpdateVehicle.jsp";
 	private bookingDao dao;
