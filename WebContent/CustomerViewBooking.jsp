@@ -56,7 +56,7 @@
 		
 <body>
 
-<%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
+<%@page import="Customer.bookingDAO,Customer.Booking,java.util.*"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>  
    
 <%  
@@ -98,8 +98,6 @@ request.setAttribute("list",list);
 		  
 		  </table>
 		<br></br>
-	
-		<a style="float:left"href="StaffAddBooking.jsp" button class="button button2">ADD BOOKING</button></a>
 		
 	
 </body>

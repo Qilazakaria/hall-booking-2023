@@ -1,5 +1,5 @@
-<%@page import="booking.bookingDAO"%>  
-<jsp:useBean id="b" class="booking.Booking"></jsp:useBean>  
+<%@page import="Customer.bookingDAO"%>  
+<jsp:useBean id="b" class="Customer.Booking"></jsp:useBean>  
 <jsp:setProperty property="*" name="b"/>  
   
 <%  
