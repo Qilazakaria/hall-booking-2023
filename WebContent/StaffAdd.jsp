@@ -64,7 +64,7 @@
 		</div> 
 <body>
 	<div class="container" style=text-align:center>
-  	<form action="/Academic_System_Maven/StaffController" method="post" id="wizard">
+  	<form action="/StaffController" method="post" id="wizard">
   	<h2>REGISTER NEW STAFF ACCOUNT</h2>
   	
 	<br><br>	   
