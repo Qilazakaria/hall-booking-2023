@@ -135,8 +135,8 @@ request.setAttribute("list",list);
 				   	<td>${cust.getCustname()}</td>
 					<td>${cust.getCustidentificationcard()}</td>
 					<td>
-						<a class="button" href="/Academic_System_Maven/CustomerController?action=view&custid=<c:out value="${cust.custid}"/>"> VIEW</a>
-						<a class="button" href="/Academic_System_Maven/UpdateCustomerController?action=update&custid=<c:out value="${cust.custid}"/>">UPDATE</a>
+						<a class="button" href="/CustomerController?action=view&custid=<c:out value="${cust.custid}"/>"> VIEW</a>
+						<a class="button" href="/UpdateCustomerController?action=update&custid=<c:out value="${cust.custid}"/>">UPDATE</a>
 						<a class="button" href="javascript:void(0);" onclick="confirmation(<c:out value="${cust.custid}"/>)">DELETE</a>
 					</td>
 				</tr>  
@@ -149,7 +149,7 @@ request.setAttribute("list",list);
 			   console.log(id);
 			   var r = confirm("Are you sure you want to delete?");
 			   if (r == true) {				 		  
-					location.href = '/Academic_System_Maven/CustomerController?action=delete&custid=' + id;
+					location.href = '/CustomerController?action=delete&custid=' + id;
 					alert("Customer successfully deleted");			
 			  	} else {				  
 			  		return false;	
