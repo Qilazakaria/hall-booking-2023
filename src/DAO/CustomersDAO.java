@@ -78,18 +78,16 @@ public class CustomersDAO {
 
 
 		try {			
-	        
-		//call getConnection() method
+	        //call getConnection() method
    con = Database_Connection.getConnection() ;
    
    // get latest ID
-      PreparedStatement psGet = con.prepareStatement("SELECT * FROM staff ORDER BY customer DESC LIMIT 1");
+      PreparedStatement psGet = con.prepareStatement("SELECT * FROM customer ORDER BY custid DESC LIMIT 1");
          ResultSet rsGet = psGet.executeQuery();
          
          while(rsGet.next()) {  
-          latestId = rsGet.getInt("staffid");
+          latestId = rsGet.getInt("custid");
          }
-
 			//create statement
 			ps = con.prepareStatement("INSERT INTO customer(custidentificationcard,custname,custtelnum,custhomeno,custaddress,custcity,custpostcode,custstate,custemail,custpass,custid)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(1, custidentificationcard);
