@@ -10,7 +10,7 @@ import DAO.CustomersDAO;
 import Model.Customers;
 import java.io.IOException;
 
-//@WebServlet ("/CustomerController")
+@WebServlet ("/CustomerController")
 public class CustomerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String action="", forward="";
@@ -53,7 +53,9 @@ public class CustomerController extends HttpServlet {
 		
 		 //Complete action for delete order 
 		 if(action.equalsIgnoreCase("delete")) {
-			 forward = LIST; int custid = Integer.parseInt(request.getParameter("custid")); dao.deleteCustomer(custid);
+			 forward = LIST;
+			 int custid = Integer.parseInt(request.getParameter("custid"));
+			 dao.deleteCustomer(custid);
 			 request.setAttribute("customers", CustomersDAO.getAllCustomer());
 			 RequestDispatcher view = request.getRequestDispatcher("ListCustomer.jsp"); 
 			 }
@@ -79,7 +81,6 @@ public class CustomerController extends HttpServlet {
 			/* date1 = formatter.parse(request.getParameter("vec_rtdate")); */
 
 			//retrieve from HTML and set the values
-			customer.setCustid(Integer.parseInt(request.getParameter("custid")));
 			customer.setCustidentificationcard(request.getParameter("custidentificationcard"));
 			customer.setCustname(request.getParameter("custname"));
 			customer.setCusttelnum(request.getParameter("custtelnum"));
@@ -90,14 +91,8 @@ public class CustomerController extends HttpServlet {
 			customer.setCuststate(request.getParameter("custstate"));
 			customer.setCustemail(request.getParameter("custemail"));
 			customer.setCustpass(request.getParameter("custpass"));
-			
 
-			//invoke method addAssets() in AssetsDAO
-			String custid = request.getParameter("custid");
-			
-			if(custid == null || custid.isEmpty()) {
-				dao.addCustomer(customer);
-			}
+			dao.addCustomer(customer);
 			
 			//set attribute to a servlet request and call getAllAssets() method
 			request.setAttribute("customers", CustomersDAO.getAllCustomer());

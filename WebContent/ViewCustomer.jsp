@@ -18,15 +18,6 @@
 <title>View Customer</title>
 </head>
 <body>
- <div class="navbar"> 
- <a href="#"><i class="fa fa-home" class="split"></i> Home</a> 
- <a href="#"><i class="" class="split"></i> Assets</a> 
- <a href="#"><i class="" class="split"></i> Maintenance</a> 
- <a href="#"><i class="" class="split"></i> Servicer</a> 
- <a  href="#"><i class="" class="split"></i> Booking</a> 
- <a class="active" href="#"><i class="fa fa-users" class="split"></i> Customer</a> 
-   <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
-</div>
 
    <div class="container-xl">
 	<div class="table-responsive">
@@ -48,11 +39,11 @@
 	<div class="form">
 	<center>
 	<h1>Customer Details</h1>
-	<a href="CustomerController?action=list" class="button"><h2>List Customer</h2></a>
+	<a href="ListCustomer.jsp" class="button"><h2>List Customer</h2></a>
 		<h3>Customer Info</h3>
 		Customer ID: <c:out value="${customer.custid}" /><br>
 	
-		Customer Name:: <c:out value="${customer.custname}" /><br>
+		Customer Name: <c:out value="${customer.custname}" /><br>
 	
 		Identification Card Number: <c:out value="${customer.custidentificationcard}" /><br>
 	

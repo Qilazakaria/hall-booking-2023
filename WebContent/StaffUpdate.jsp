@@ -32,7 +32,7 @@ Staff s=staffDAO.getRecordById(Integer.parseInt(staffid));
 	<div class="container" style=text-align:center>
   	<form action="StaffUpdateFunction.jsp" method="post">
   	<h2>UPDATE STAFF ACCOUNT</h2>
-  	<input type="hidden" name="staffid" value="<%=s.getStaffid() %>"/>
+  	<input type="" name="staffid" value="<%=s.getStaffid() %>"/>
 			
 	<br><br>    
 	<label for="staffname">NAME: </label><br>
@@ -61,21 +61,21 @@ Staff s=staffDAO.getRecordById(Integer.parseInt(staffid));
     <label for="staffstate">STATE: </label><br>
     <select id="staffstate" name = "staffstate"  class = "custom-select" >
 		<option value="" ></option>	
-		<option value="JOHOR">JOHOR</option>
-		<option value="MELAKA">MELAKA</option>
-		<option value="KEDAH">KEDAH</option>
-		<option value="KELANTAN">KELANTAN</option>
-		<option value="NEGERI SEMBILAN">NEGERI SEMBILAN</option>
-		<option value="PAHANG">PAHANG</option>
-		<option value="PERAK">PERAK</option>
-		<option value="PERLIS">PERLIS</option>
-		<option value="SELANGOR">SELANGOR</option>
-		<option value="TERENGGANU">TERENGGANU</option>
-		<option value="PULAU PINANG">PULAU PINANG</option>
-		<option value="SABAH">SABAH</option>
-		<option value="SARAWAK">SARAWAK</option>
-		<option value="KUALA LUMPUR">KUALA LUMPUR</option>
-		<option value="PUTRAJAYA">PUTRAJAYA</option>
+		<option <%= (s.getStaffstate().equals("JOHOR")?"selected='selected'":"") %> value="JOHOR">JOHOR</option>
+		<option <%= (s.getStaffstate().equals("MELAKA")?"selected='selected'":"") %> value="MELAKA">MELAKA</option>
+		<option <%= (s.getStaffstate().equals("KEDAH")?"selected='selected'":"") %> value="KEDAH">KEDAH</option>
+		<option <%= (s.getStaffstate().equals("KELANTAN")?"selected='selected'":"") %> value="KELANTAN">KELANTAN</option>
+		<option <%= (s.getStaffstate().equals("NEGERI SEMBILAN")?"selected='selected'":"") %> value="NEGERI SEMBILAN">NEGERI SEMBILAN</option>
+		<option <%= (s.getStaffstate().equals("PAHANG")?"selected='selected'":"") %> value="PAHANG">PAHANG</option>
+		<option <%= (s.getStaffstate().equals("PERAK")?"selected='selected'":"") %> value="PERAK">PERAK</option>
+		<option <%= (s.getStaffstate().equals("PERLIS")?"selected='selected'":"") %> value="PERLIS">PERLIS</option>
+		<option <%= (s.getStaffstate().equals("SELANGOR")?"selected='selected'":"") %> value="SELANGOR">SELANGOR</option>
+		<option <%= (s.getStaffstate().equals("TERENGGANU")?"selected='selected'":"") %> value="TERENGGANU">TERENGGANU</option>
+		<option <%= (s.getStaffstate().equals("PULAU PINANG")?"selected='selected'":"") %> value="PULAU PINANG">PULAU PINANG</option>
+		<option <%= (s.getStaffstate().equals("SABAH")?"selected='selected'":"") %> value="SABAH">SABAH</option>
+		<option <%= (s.getStaffstate().equals("SARAWAK")?"selected='selected'":"") %> value="SARAWAK">SARAWAK</option>
+		<option <%= (s.getStaffstate().equals("KUALA LUMPUR")?"selected='selected'":"") %> value="KUALA LUMPUR">KUALA LUMPUR</option>
+		<option <%= (s.getStaffstate().equals("PUTRAJAYA")?"selected='selected'":"") %> value="PUTRAJAYA">PUTRAJAYA</option>
 	</select><br>
     
     <label for="stafftelnum">TELEPHONE NO: </label><br>
