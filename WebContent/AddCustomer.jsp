@@ -25,7 +25,7 @@
 </div>
 
 <h2>Add New Customer</h2>
-	<form action="/Academic_System_Maven/CustomerController" method="post" id="wizard" style="text-align: center">
+	<form action="/CustomerController" method="post" id="wizard" style="text-align: center">
 		
 		<label for="custidentificationcard">Ic Number</label>
 	    <input type="text" id="custidentificationcard" name="custidentificationcard" placeholder="Cust Identitification Card"><br><br>
