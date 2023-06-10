@@ -22,8 +22,14 @@
 				background-image : url('assets/images/Login.jpg');
 			}
 		</style>
+		
+		<script type="text/javascript">
+			function removeSessionID() {
+				sessionStorage.removeItem("loginID");
+			}
+		</script>
 	</head>
-<body> 
+<body onload="removeSessionID()"> 
     <div class="center">
         <h1>ADMIN LOGIN</h1>
         <form action="Login_Servlet" method="post">

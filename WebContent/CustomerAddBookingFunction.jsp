@@ -1,8 +1,8 @@
-<%@page import="Customer.bookingDAO"%>  
-<jsp:useBean id="b" class="Customer.Booking"></jsp:useBean>  
+<%@page import="booking.bookingDAO"%>  
+<jsp:useBean id="b" class="booking.Booking"></jsp:useBean>  
 <jsp:setProperty property="*" name="b"/>  
   
 <%  
 int i=bookingDAO.save(b);   
-response.sendRedirect("CustomerViewBooking.jsp");  
+response.sendRedirect("CustomerViewBooking.jsp?loginID="+b.getCustid());  
 %>  

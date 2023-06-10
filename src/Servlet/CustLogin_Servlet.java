@@ -30,7 +30,7 @@ public class CustLogin_Servlet extends HttpServlet {
 		Customer customer_login = customerdao.logincustomer(customer_info);
 		
 		if(customer_login.isLoginstatus() == true) {
-			response.sendRedirect("CustomerMainPage.jsp");
+			response.sendRedirect("CustomerMainPage.jsp?loginStatus=SUCCESS&loginID=" + customer_login.getCustid());
 		}
 		else {
 			System.out.println("login failed");

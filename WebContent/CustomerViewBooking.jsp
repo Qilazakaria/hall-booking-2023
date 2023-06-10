@@ -1,104 +1,79 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c"  
-   uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
-<link href="assets/css/bookingForm.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="assets/css/customernavigation.css"> 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
- 
-	<title>List Booking</title>
+	<head>
+		<meta charset="ISO-8859-1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<link rel="stylesheet" href="assets/css/Custom.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+		<title>Booking Page | Hall Booking System</title>
+		<script>
+			$(document).ready( function () {
+			    $('#assetTable').DataTable();
+			});
+			
+			function setURL() {
+				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("viewBooking").href = "CustomerViewBooking.jsp?loginID=" + loginID;
+				document.getElementById("viewProfile").href = "/CustomerController?action=viewProfile&custid=" + loginID;
+			}
+		</script>
 	</head>
-	<style>
-	table {
-	  font-family: arial, sans-serif;
-	  border-collapse: collapse;
-	  width: 95%;
-	  margin:auto;
-	}
-	
-	td, th {
-	  border: 1px solid #dddddd;
-	  text-align: center;
-	  padding: 8px;
-	}
-	
-	tr:nth-child(even) {
-	  background-color: #dddddd;
-	}
-	.button {
-	  border: none;
-	  color: #3A9BDC;
-	  padding: 10px 22px;
-	  text-align: center;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	  margin: 2px 2px;
-	  transition-duration: 0.4s;
-	  cursor: pointer;
-	}
-	.button2 {
-	  background-color: #52BE80; 
-	  color: black; 
-	  border: 2px solid #52BE80;
-	}
-	
-	.button2:hover {
-	  background-color: #52BE80;
-	  color: black;
-	}
-	</style>
-		
-<body>
-
-<%@page import="Customer.bookingDAO,Customer.Booking,java.util.*"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>  
-   
-<%  
-List<Booking> list=bookingDAO.getAllRecords();  
-request.setAttribute("list",list);  
-%> 
-
-<div class="navbar"> 
-		 <a href="CustomerMainPage.jsp"><i class="split"></i> Home</a> 
-		 <a href="CustomerViewBooking.jsp"><i class="split"></i> Booking</a>
-		 <a href="CustomerRegisterBooking.jsp"><i class="split"></i> Add Booking</a> 
-		 <a href="#"><i class="split"></i> Edit Profile</a>
-		 <li style="float:right"><a href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
-		</div> 
-		
-		
-		<table>
-		 <br></br>
-		 <h3>Your Booking</h3>
-		 <br></br>
-		  <tr>
-		    <th>DATE</th>
-		    <th>TIME</th>
-			<th>DESCRIPTION</th>
-			<th>ESTIMATE CAPACITY</th>
-			<th>PRICE</th>
-		    
-		  </tr>
-		  <tr>
-		   <c:forEach items="${list}" var="b">  
-			<td>${b.getBookingdate()}</td>
-			<td>${b.getBookingtime()}</td>
-			<td>${b.getBookingdescription()}</td>
-			<td>${b.getBookingestimatecapacity()}</td>
-			<td>${b.getBookingprice()}</td>
-			</tr>  
-			</tbody>
-			</c:forEach> 
-		  
-		  </table>
-		<br></br>
-		
-	
-</body>
+	<body onload="setURL()">
+		<%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
+		<%
+			String id = request.getParameter("loginID");
+			List<Booking> bookings = bookingDAO.getAllRecordsByCustId(Integer.parseInt(id));  
+			request.setAttribute("bookings", bookings);
+		%>
+		<div class="nav-bar"> 
+			<a href="CustomerMainPage.jsp">Home</a> 
+			<a class="active" id="viewBooking">Booking</a>
+			<a href="CustomerRegisterBooking.jsp">Add Booking</a> 
+			<a id="viewProfile">Edit Profile</a>
+			<a href="CustomerLogin.jsp" style="float:right"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+		</div>
+		<div class="card w-75" style="margin: 10px auto">
+			<h5 class="card-header"><b>BOOKING LIST</b></h5>
+			<div class="card-body p-2">
+				<table id="assetTable" class="display">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>DESCRIPTION</th>
+						    <th>DATE</th>
+						    <th>TIME</th>
+						    <th>STAFF</th>
+						    <th>CUSTOMER</th>
+						    <th>ACTION</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${bookings}" var="booking">
+							<tr>  
+								<td>${booking.getBookingid()}</td>
+								<td>${booking.getBookingdescription()}</td>
+								<td>${booking.getBookingdate()}</td>
+								<td>${booking.getBookingtime()}</td>
+								<td>${booking.getStaffName()}</td>
+								<td>${booking.getCustName()}</td>
+								<td>
+									<span class="col input-group m-1">
+										<span class="input-group-text text-white bg-secondary bg-opacity-75 border border-secondary">
+											<i class="fa fa-search"></i>
+										</span>
+										<a href="StaffViewBooking.jsp?bookingid=${booking.getBookingid()}" class="btn btn-secondary">View</a> 
+									</span>
+								</td>
+							</tr>  
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>  		
+		</div>
+	</body>
 </html>

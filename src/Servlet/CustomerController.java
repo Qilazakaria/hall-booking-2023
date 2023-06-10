@@ -45,6 +45,13 @@ public class CustomerController extends HttpServlet {
 			view.forward(request, response);
 		}
 		
+		if(action.equalsIgnoreCase("viewProfile")) {
+			int custid = Integer.parseInt(request.getParameter("custid"));
+			request.setAttribute("customer", CustomersDAO.getCustomer(custid));
+			RequestDispatcher view = request.getRequestDispatcher("CustomerProfile.jsp");
+			view.forward(request, response);
+		}
+		
 		//Complete action for list order
 		// for all order have been inserted
 		if(action.equalsIgnoreCase("list")) {

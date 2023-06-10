@@ -63,7 +63,7 @@
 		</div>
 		<div class="card w-75" style="margin: 10px auto">
 			<h5 class="card-header"><b>CUSTOMER LIST</b></h5>
-			<div class="card-body p-2">
+			<div class="card-body p-2" style="overflow: auto">
 				<table id="assetTable" class="display">
 					<thead>
 						<tr>
@@ -79,7 +79,7 @@
 							   	<td>${customer.getCustid()}</td>
 							   	<td>${customer.getCustname()}</td>
 								<td>${customer.getCustidentificationcard()}</td>
-								<td>
+								<td style="min-width: 150px !important">
 									<span class="col input-group m-1">
 										<span class="input-group-text text-white bg-secondary bg-opacity-75 border border-secondary">
 											<i class="fa fa-search"></i>

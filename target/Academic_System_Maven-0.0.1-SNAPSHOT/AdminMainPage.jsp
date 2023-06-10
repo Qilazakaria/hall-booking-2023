@@ -14,6 +14,10 @@
 		<!-- <link rel="icon" href="assets/images/UiTM_logo.png"> -->
 		<!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
 		<link href="assets/css/MainPageAdmin.css" rel="stylesheet">
+		<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="assets/css/Custom.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+		<title>Home Page | Hall Booking System</title>
 		<style>
 			body {
 				background-image : url('assets/images/Hall.jpg');
@@ -46,22 +50,18 @@
 			</form>
 		</main>
 		 -->
-		<div class="header">
-	        <div class="header-right">
-	            <a class="active" href="AdminMainPage.html">Home</a>
-	            <a href="CustomerLogIn.html">Login</a>
-	            <a href="">Staff</a>
-	            <a href="">Booking Hall</a>
-	            <a href="">Customer</a>
-	            <a href="">Assets</a>
-	            <a href="">Maintenance</a>
-	            <a href="">Servicer</a>
-	        </div>
-	    </div>
-		<div class="backBut">
-			<button type="button" onclick="goBack()">&laquo;</button>
+		<div class="nav-bar"> 
+			<a class="active" href="AdminMainPage.jsp">Home</a>
+			<a href="StaffView.jsp">Staff</a>
+			<a href="ListCustomer.jsp">Customer</a>
+			<a href="ServicerView.jsp">Servicer</a>
+			<a href="MaintenanceController?action=list">Maintenance</a>
+			<a href="AssetsController?action=list">Assets</a>
+			<a href="StaffListBooking.jsp">Booking</a>
+			<a style="float:right" href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a>
 		</div>
-		<h1> Kompleks Japerun Duyong</h1>
+		
+		<h1> Kompleks Japerun Duyong, Melaka</h1>
 		<br>
 		<h3> No 3123-1, KM 5 Lebuh AMJ, Taman Semabok Emas 75050 Melaka.</h3>
 	 	<br>

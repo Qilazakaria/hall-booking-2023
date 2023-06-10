@@ -15,16 +15,34 @@
 		<!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
 		<link href="assets/css/MainPageAdmin.css" rel="stylesheet">
 		<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="assets/css/customernavigation.css"> 
+		<link rel="stylesheet" href="assets/css/Custom.css"> 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 		<style>
 			body {
 				background-image : url('assets/images/Hall.jpg');
 			}
 		</style>
+		<script type="text/javascript">
+			function setSessionID() {
+				let url_string = location.href; 
+				let url = new URL(url_string);
+				let loginStatus = url.searchParams.get("loginStatus");
+				let loginID = url.searchParams.get("loginID");
+		
+				if (loginStatus == "SUCCESS") {
+					sessionStorage.setItem("loginID", loginID);
+				}
+			}
+			
+			function setURL() {
+				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("viewBooking").href = "CustomerViewBooking.jsp?loginID=" + loginID;
+				document.getElementById("viewProfile").href = "/CustomerController?action=viewProfile&custid=" + loginID;
+			}
+		</script>
 	</head>
 	
-	<body>
+	<body onload="setSessionID(); setURL()">
 		<!-- 
 		<main class="form-signin text-center mt-8 bg-accent">
 			<input type="button" class="w-50 p-3 fw-bold bg-accent" value="Staff"><input onclick="window.location.href='Redirect_Servlet?action=lecturer_location'" type="button" class="w-50 p-3 bg-accent-light" value="Class">
@@ -49,13 +67,13 @@
 			</form>
 		</main>
 		 -->
-		<div class="navbar"> 
-		 <a class="active" href="#"><i class="split"></i> Home</a> 
-		 <a href="CustomerViewBooking.jsp"><i class="" class="split"></i> Booking</a>
-		 <a href="CustomerRegisterBooking.jsp"><i class="" class="split"></i> Add Booking</a> 
-		 <a href="#"><i class="" class="split"></i> Edit Profile</a> 
-		   <li style="float:right"><a href="CustomerLogin.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
-		</div> 
+		<div class="nav-bar"> 
+			<a class="active" href="CustomerMainPage.jsp">Home</a> 
+			<a id="viewBooking">Booking</a>
+			<a href="CustomerRegisterBooking.jsp">Add Booking</a> 
+			<a id="viewProfile">Edit Profile</a>
+			<a href="CustomerLogin.jsp" style="float:right"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+		</div>
 		
 		<h1> Kompleks Japerun Duyong</h1>
 		<br>

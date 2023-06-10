@@ -29,7 +29,7 @@ public class Login_Servlet extends HttpServlet {
 		Staff staff_login = staffdao.loginstaff(staff_info);
 		
 		if(staff_login.isLoginstatus() == true) {
-			response.sendRedirect("AdminMainPage.jsp");
+			response.sendRedirect("AdminMainPage.jsp?loginStatus=SUCCESS&loginID=" + staff_login.getStaffid());
 		}
 		else {
 			System.out.println("login failed,please try again.");

@@ -34,6 +34,7 @@ public class Customer_DAO {
 				if(sec_rs.next()) {
 					System.out.println("Connection Success");
 					login_customer.setLoginstatus(true);
+					login_customer.setCustid(sec_rs.getInt("custid"));
 				}
 				else {
 					System.out.println("Wrong ID and password combination");

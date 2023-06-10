@@ -31,7 +31,6 @@
 	</head>
 	<body onload="displayStatus()">
 		<%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
-		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 		<%
 			List<Booking> bookings = bookingDAO.getAllRecords();  
 			request.setAttribute("bookings", bookings);
@@ -56,7 +55,7 @@
 		</div>
 		<div class="card w-75" style="margin: 10px auto">
 			<h5 class="card-header"><b>BOOKING LIST</b></h5>
-			<div class="card-body p-2">
+			<div class="card-body p-2" style="overflow: auto">
 				<table id="assetTable" class="display">
 					<thead>
 						<tr>
@@ -78,12 +77,18 @@
 								<td>${booking.getBookingtime()}</td>
 								<td>${booking.getStaffName()}</td>
 								<td>${booking.getCustName()}</td>
-								<td>
+								<td style="min-width: 150px !important">
 									<span class="col input-group m-1">
 										<span class="input-group-text text-white bg-secondary bg-opacity-75 border border-secondary">
 											<i class="fa fa-search"></i>
 										</span>
 										<a href="StaffViewBooking.jsp?bookingid=${booking.getBookingid()}" class="btn btn-secondary">View</a> 
+									</span>
+									<span class="col input-group m-1">
+										<span class="input-group-text text-white bg-info bg-opacity-75 border border-info">
+											<i class="fa fa-eyedropper"></i>
+										</span>
+										<a href="StaffUpdateBooking.jsp?bookingid=${booking.getBookingid()}" class="btn btn-info">Update</a> 
 									</span>
 								</td>
 							</tr>  

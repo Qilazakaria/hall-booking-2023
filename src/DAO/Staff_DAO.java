@@ -34,6 +34,7 @@ public class Staff_DAO {
 				if(sec_rs.next()) {
 					System.out.println("Connection Success");
 					login_staff.setLoginstatus(true);
+					login_staff.setStaffid(sec_rs.getInt("staffid"));
 				}
 				else {
 					System.out.println("Wrong ID and password combination");

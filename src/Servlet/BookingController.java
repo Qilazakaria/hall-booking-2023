@@ -6,14 +6,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import DAO.bookingDao;
+
 import java.io.IOException;
 import booking.bookingDAO;
 import Model.booking;
 import java.text.SimpleDateFormat;
 
-/**
- * Servlet implementation class CustomerController
- */
 @WebServlet ("/BookingController")
 public class BookingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +22,7 @@ public class BookingController extends HttpServlet {
 	private static String VIEW ="ViewVehicle.jsp";
 	private static String UPDATE ="UpdateVehicle.jsp";
 	private bookingDAO dao;
+	private bookingDao bookingDao;
 	private int bookingid;
        
     /**
@@ -30,6 +31,7 @@ public class BookingController extends HttpServlet {
     public BookingController() {
         super();
         dao = new bookingDAO();
+    	bookingDao = new bookingDao();
         // TODO Auto-generated constructor stub
     }
 
@@ -67,52 +69,22 @@ public class BookingController extends HttpServlet {
 		view.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-				java.util.Date date1;
-				
+				int updateBooking = 0;
 				try {
 					booking book = new booking();
-					date1 = formatter.parse(request.getParameter("bookingdate"));
-//				    int staffID = Integer.parseInt(request.getParameter("staffID"));
-//				    int custID = Integer.parseInt(request.getParameter("custID"));
-					
-					//retrieve from HTML and set the values
-				    book.setBookingdate(date1);
-				    book.setBookingtime(request.getParameter("bookingtime"));
-					book.setBookingdescription(request.getParameter("bookingdescription"));
-					book.setBookingestimatecapacity(Integer.parseInt(request.getParameter("bookingestimatecapacity")));
+					book.setBookingid(Integer.parseInt(request.getParameter("bookingid")));
 				    book.setBookingprice(Integer.parseInt(request.getParameter("bookingprice")));
-//					book.setStaffID(staffID);
-//					book.setCustID(custID);
-					
-//					ps.setString(2, bookingDescription);
-//					ps.setInt(3, bookingEstimateCapacity);
-//					ps.setInt(4, bookingPrice);
-
-					//invoke method addOrder() in VehiclesDAO
-					String bookingid = request.getParameter("bookingid");
-					
-					if(bookingid == null || bookingid.isEmpty()) {
-						//dao.save(boo);
-					}
-					
-					//set attribute to a servlet request and call getVehicles() method
-					request.setAttribute("list", bookingDAO.getAllRecords());
-					
+				    updateBooking = bookingDao.update(book);
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
-
-				//forward the request to ListVehicle.jsp
-				forward = LIST;
-				RequestDispatcher LIST = request.getRequestDispatcher(forward);
-				LIST.forward(request, response);
-		
+				
+				if (updateBooking == 1) {
+					response.sendRedirect("StaffListBooking.jsp?status=SUCCESS");
+				} else {
+					response.sendRedirect("StaffListBooking.jsp?status=FAIL");
+				}
 	}
 
 }

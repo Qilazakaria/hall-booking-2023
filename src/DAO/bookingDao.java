@@ -68,17 +68,9 @@ public void addBooking(booking bean) {
 	    int status=0;    
 	    try{  
 	    	con = Database_Connection.getConnection() ; 
-	        PreparedStatement ps=con.prepareStatement(  "update bookinghall set bookingdate=?,bookingtime=?,bookingdescription=?,bookingestimatecapacity=?,bookingprice=?,staffid=?,custid=? where bookingid=?");  
-	        java.util.Date utilDate = b.getBookingdate();
-	        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-	        ps.setDate(1, sqlDate);  
-	        ps.setString(2,b.getBookingtime());  
-	        ps.setString(3,b.getBookingdescription()); 
-	        ps.setInt(4,b.getBookingestimatecapacity()); 
-	        ps.setInt(5,b.getBookingprice()); 
-	        ps.setInt(6,b.getStaffid());  
-	        ps.setInt(7,b.getCustid()); 
-	        ps.setInt(8,b.getBookingid());
+	        PreparedStatement ps=con.prepareStatement(  "update bookinghall set bookingprice=? where bookingid=?");
+	        ps.setInt(1,b.getBookingprice());
+	        ps.setInt(2,b.getBookingid());
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	    return status;  

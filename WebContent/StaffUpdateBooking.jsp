@@ -7,13 +7,13 @@
 		<link rel="stylesheet" href="assets/css/Custom.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Booking Page | Hall Booking System</title>
-		<script type="text/javascript">
-			function setStaffID() {
-				document.getElementById("staffid").value = sessionStorage.getItem("loginID");
-			}
-		</script>
 	</head>
-	<body onload="setStaffID()">
+	<body>
+		<%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
+		<%  
+			int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+			Booking booking = bookingDAO.getRecordById(bookingid);
+		%>
 		<div class="nav-bar"> 
 			<a href="AdminMainPage.jsp">Home</a>
 			<a href="StaffView.jsp">Staff</a>
@@ -25,28 +25,31 @@
 			<a style="float:right" href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a>
 		</div>
 		<div class="card w-50" style="margin: 10px auto">
-			<h5 class="card-header"><b>ADD BOOKING</b></h5>
+			<h5 class="card-header"><b>VIEW BOOKING</b></h5>
 			<div class="card-body">
-				<form action="StaffAddBookingFunction.jsp" method="post" id="wizard">
-					<label class="form-label">Staff ID :</label>
-					<input type="text" class="form-control mb-2" name="staffid" id="staffid" readonly>
+				<form action="/BookingController" method="post">
+					<input type="hidden" class="form-control mb-2" name="bookingid" id="bookingid" value="<%= booking.getBookingid() %>">
 					
-					<label class="form-label">Booking Date <span class="text-danger fw-bold">*</span> :</label>
-					<input type="date" class="form-control mb-2" id="bookingdate" name="bookingdate" required>
+					<label class="form-label">Staff Name :</label>
+					<input type="text" class="form-control mb-2" name="staffid" id="staffid" value="<%= booking.getStaffName() %>" disabled>
+					
+					<label class="form-label">Customer Name :</label>
+					<input type="text" class="form-control mb-2" name="custid" id="custid" value="<%= booking.getCustName() %>" disabled>
+					
+					<label class="form-label">Booking Date :</label>
+					<input type="text" class="form-control mb-2" id="bookingdate" name="bookingdate" value="<%= booking.getBookingdate() %>" disabled>
 					
 					<label class="form-label">Booking Time :</label>
-					<div style="text-indent: 20px"><input type="radio" name="bookingtime" id="bookingtime" value="08:00 AM - 05:00 PM"> 08:00 AM - 05:00 PM</div>
-					<div style="text-indent: 20px"><input type="radio" name="bookingtime" id="bookingtime" value="05:00 PM - 12:00 AM"> 05:00 PM - 12:00 AM</div>
-					<div class="mb-2"></div>
-
+					<input type="text" class="form-control mb-2" id="bookingtime" name="bookingtime" value="<%= booking.getBookingtime() %>" disabled>
+	
 					<label class="form-label">Booking Description :</label>
-					<input type="text" class="form-control mb-2" id="bookingdescription" name="bookingdescription">
+					<input type="text" class="form-control mb-2" id="bookingdescription" name="bookingdescription" value="<%= booking.getBookingdescription() %>" disabled>
 					
 					<label class="form-label">Booking Estimate Capacity :</label>
-					<input type="text" class="form-control mb-2" id="bookingestimatecapacity" name="bookingestimatecapacity">
+					<input type="text" class="form-control mb-2" id="bookingestimatecapacity" name="bookingestimatecapacity" value="<%= booking.getBookingestimatecapacity() %>" disabled>
 					
 					<label class="form-label">Booking Price (RM) :</label>
-					<input type="text" class="form-control mb-2" id="bookingprice" name="bookingprice">
+					<input type="text" class="form-control mb-2" id="bookingprice" name="bookingprice" value="<%= booking.getBookingprice() %>">
 					<br>
 					<div class="row">
 						<div class="col"></div>
@@ -55,7 +58,7 @@
 							<span class="input-group-text text-white bg-success bg-opacity-75 border border-success">
 								<i class="fa fa-check"></i>
 							</span>
-							<input class="btn btn-success w-75" type="submit" value="Add">
+							<input class="btn btn-success w-75" type="submit" value="Update">
 						</div>
 						<div class="col input-group">
 							<span class="input-group-text text-black bg-warning bg-opacity-75 border border-warning">

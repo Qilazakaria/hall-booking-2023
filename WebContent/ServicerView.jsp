@@ -63,7 +63,7 @@
 		</div>
 		<div class="card w-75" style="margin: 10px auto">
 			<h5 class="card-header"><b>SERVICER LIST</b></h5>
-			<div class="card-body p-2">
+			<div class="card-body p-2" style="overflow: auto">
 				<table id="assetTable" class="display">
 					<thead>
 						<tr>
@@ -81,7 +81,7 @@
 							   	<td>${servicer.getServicername()}</td>
 								<td>${servicer.getServicertelno()}</td>
 								<td>${servicer.getServicerhomeno()}, ${servicer.getServiceraddress()}, ${servicer.getServicercity()}, ${servicer.getServicerpostcode()}, ${servicer.getServicerstate()}.</td> 
-								<td>
+								<td style="min-width: 150px !important">
 									<span class="col input-group m-1">
 										<span class="input-group-text text-black bg-info bg-opacity-75 border border-info">
 											<i class="fa fa-eyedropper"></i>

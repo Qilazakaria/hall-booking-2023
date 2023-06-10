@@ -27,15 +27,41 @@ public class bookingDAO {
 	        	latestId = rsGet.getInt("bookingid");
 	        }
 	    	
-	        PreparedStatement ps=con.prepareStatement(  
-	"insert into bookinghall(bookingdate,bookingtime,bookingdescription,bookingestimatecapacity,bookingprice,staffid,bookingid) values(?,?,?,?,?,?,?)"); 
+	        ps=con.prepareStatement("insert into bookinghall(bookingdate,bookingtime,bookingdescription,bookingestimatecapacity,bookingprice,staffid,bookingid,custid) values(?,?,?,?,?,?,?,?)"); 
 	        ps.setString(1,b.getBookingdate());
 	        ps.setString(2,b.getBookingtime());
 	        ps.setString(3,b.getBookingdescription());
 	        ps.setInt(4,b.getBookingestimatecapacity());
 	        ps.setInt(5,b.getBookingprice());
-	        ps.setInt(6,b.getStaffid());
+	        if (b.getStaffid() != 0) {
+		        ps.setInt(6,b.getStaffid());
+	        }
 	        ps.setInt(7,latestId + 1);
+	        if (b.getCustid() != 0) {
+		        ps.setInt(8,b.getCustid());
+	        }
+	        
+	        if (b.getStaffid() != 0) {
+	        	ps=con.prepareStatement("insert into bookinghall(bookingdate,bookingtime,bookingdescription,bookingestimatecapacity,bookingprice,staffid,bookingid) values(?,?,?,?,?,?,?)"); 
+		        ps.setString(1,b.getBookingdate());
+		        ps.setString(2,b.getBookingtime());
+		        ps.setString(3,b.getBookingdescription());
+		        ps.setInt(4,b.getBookingestimatecapacity());
+		        ps.setInt(5,b.getBookingprice());
+			    ps.setInt(6,b.getStaffid());
+		        ps.setInt(7,latestId + 1);
+	        }
+	        if (b.getCustid() != 0) {
+	        	ps=con.prepareStatement("insert into bookinghall(bookingdate,bookingtime,bookingdescription,bookingestimatecapacity,bookingprice,custid,bookingid) values(?,?,?,?,?,?,?)"); 
+		        ps.setString(1,b.getBookingdate());
+		        ps.setString(2,b.getBookingtime());
+		        ps.setString(3,b.getBookingdescription());
+		        ps.setInt(4,b.getBookingestimatecapacity());
+		        ps.setInt(5,b.getBookingprice());
+			    ps.setInt(6,b.getCustid());
+		        ps.setInt(7,latestId + 1);
+	        }
+	        
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	    return status;  
@@ -47,6 +73,40 @@ public class bookingDAO {
 	    try{  
 	    	con = Database_Connection.getConnection() ; 
 	        PreparedStatement ps=con.prepareStatement("select * from bookinghall ORDER BY bookingid");  
+	        ResultSet rs=ps.executeQuery();  
+	        while(rs.next()){  
+	        	Booking b=new Booking();  
+	        	b.setBookingid(rs.getInt("bookingid"));
+	        	b.setBookingdescription(rs.getString("bookingdescription"));
+	        	b.setBookingdate(rs.getString("bookingdate"));
+	            b.setBookingtime(rs.getString("bookingtime"));
+	            list.add(b);  
+	            
+	            PreparedStatement getstaffps=con.prepareStatement("SELECT * FROM staff where staffid=?");  
+	            getstaffps.setInt(1,rs.getInt("staffid"));  
+		        ResultSet getstaffrs=getstaffps.executeQuery();  
+		        while(getstaffrs.next()){
+		              b.setStaffName(getstaffrs.getString("staffname"));
+		        }
+	            
+	            PreparedStatement getcustps=con.prepareStatement("SELECT * FROM customer where custid=?");  
+	            getcustps.setInt(1,rs.getInt("custid"));  
+		        ResultSet getcustrs=getcustps.executeQuery();  
+		        while(getcustrs.next()){
+		        	b.setCustName(getcustrs.getString("custname"));
+		        }
+	        }  
+	    }catch(Exception e){System.out.println(e);}  
+	    return list;  
+	}
+	
+	public static List<Booking> getAllRecordsByCustId(int custid){  
+	    List<Booking> list=new ArrayList<Booking>();  
+	      
+	    try{  
+	    	con = Database_Connection.getConnection() ; 
+	        PreparedStatement ps=con.prepareStatement("select * from bookinghall WHERE custid=? ORDER BY bookingid");  
+	        ps.setInt(1, custid);
 	        ResultSet rs=ps.executeQuery();  
 	        while(rs.next()){  
 	        	Booking b=new Booking();  
