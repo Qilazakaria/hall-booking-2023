@@ -38,6 +38,10 @@ public class AssetsController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		action = request.getParameter("action");
+		
+		if (action == "" || action == null) {
+			action = "list";
+		}
 
 		//Complete action for view asset
 		if(action.equalsIgnoreCase("view")) {
@@ -66,22 +70,12 @@ public class AssetsController extends HttpServlet {
 		view.forward(request, response);
 
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		/*
-		 * SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		 * java.util.Date date1;
-		 */
-		
+		int addStatus = 0;
 		try {
 			Assets asset = new Assets();
-			/* date1 = formatter.parse(request.getParameter("vec_rtdate")); */
-
-			//retrieve from HTML and set the values
+			
 			asset.setAssetsname(request.getParameter("assetsname"));
 			asset.setAssetsquantity(Integer.parseInt(request.getParameter("assetsquantity")));
 			asset.setAssetscategory(request.getParameter("assetscategory"));
@@ -89,27 +83,16 @@ public class AssetsController extends HttpServlet {
 			asset.setElectvoltage(request.getParameter("electvoltage"));
 			asset.setVoltageunit(request.getParameter("voltageunit"));
 			
-
-			//invoke method addAssets() in AssetsDAO
-			String assetsid = request.getParameter("assetsid");
+			addStatus = dao.addAssets(asset);
 			
-			if(assetsid == null || assetsid.isEmpty()) {
-				dao.addAssets(asset);
-			}
-			
-			//set attribute to a servlet request and call getAllAssets() method
-			request.setAttribute("assets", AssetDAO.getAllAssets());
-			
-		}catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 
-		
-		
-		//forward the request to ListVehicle.jsp
-		forward = LIST;
-		RequestDispatcher LIST = request.getRequestDispatcher("ListAssets.jsp");
-		LIST.forward(request, response);
-		
+		if (addStatus == 1) {
+			response.sendRedirect("AssetsController?action=list&status=SUCCESS");
+		} else {
+			response.sendRedirect("AssetsController?action=list&status=FAIL");
+		}
 	}
 }

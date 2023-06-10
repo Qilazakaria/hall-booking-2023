@@ -9,124 +9,81 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import DAO.MaintenanceDAO;
 import Model.Maintenances;
-import Servicer.servicerDAO;
-import DAO.AssetDAO;
 import java.text.SimpleDateFormat;
 
-/**
- * Servlet implementation class MaintenanceController
- */
 @WebServlet ("/MaintenanceController")
 public class MaintenanceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String action="", forward="";
 	private static String LIST ="staffListMaintenance.jsp";
-	private static String VIEW ="ViewMaintenance.jsp";
-	private static String UPDATE ="UpdateMaintenace.jsp";
 	private static String ADD = "staffAddMaintenanace.jsp";
 	private MaintenanceDAO dao;
-	private int mtnanceid;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public MaintenanceController(){
         super();
         dao = new MaintenanceDAO();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		action = request.getParameter("action");
 		
-		//Complete action for view order
-//		if(action.equalsIgnoreCase("update")) {
-//			forward = UPDATE;
-//			int mtnanceID = Integer.parseInt(request.getParameter("mtnanceID"));
-////			request.setAttribute("maintenance", MaintenanceDAO.getMaintenance(mtnanceID));
-//			request.setAttribute("assets", AssetDAO.getAllAssets());
-//			forward = UPDATE;
-//		}
-		//Complete action for list maintenance
-		// for all maintenance have been inserted
-		if(action.equalsIgnoreCase("list")) {
+		if (action.equalsIgnoreCase("list")) {
 			forward = LIST;
 			request.setAttribute("maintenances", MaintenanceDAO.getMaintenances());
+			RequestDispatcher view = request.getRequestDispatcher(forward);
+			view.forward(request, response);
 		}
 		
-		//Buat DAO utk Asset
 		if(action.equalsIgnoreCase("add")) {
-			request.setAttribute("assets", AssetDAO.getAllAssets());
 			forward = ADD;
+			RequestDispatcher view = request.getRequestDispatcher(forward);
+			view.forward(request, response);
 		}
 		
-		//Buat DAO utk Servicer
-		if(action.equalsIgnoreCase("add")) {
-			request.setAttribute("list", servicerDAO.getAllRecords());
-			forward = ADD;
-		}
-		
-		//Complete action for delete order
-		if(action.equalsIgnoreCase("delete")) {
-			forward = LIST;
+		if (action.equalsIgnoreCase("delete")) {
+			int deleteStatus = 0;
 			int mtnanceid = Integer.parseInt(request.getParameter("mtnanceid"));
-			dao.deleteMaintenance(mtnanceid);
-			request.setAttribute("maintenances", MaintenanceDAO.getMaintenances());
-			RequestDispatcher view = request.getRequestDispatcher("staffListMaintenance.jsp");
-		}
+			deleteStatus = dao.deleteMaintenance(mtnanceid);
 
-		//forward the request
-		RequestDispatcher view = request.getRequestDispatcher(forward);
-		view.forward(request, response);
+			if (deleteStatus == 1) {
+				response.sendRedirect("MaintenanceController?action=list&status=SUCCESS");
+			} else {
+				response.sendRedirect("MaintenanceController?action=list&status=FAIL");
+			}
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date date1;
 		java.util.Date date2;
-	 		
+	 	int addStatus = 0;
+	 	
 		try {
 			Maintenances maintenance = new Maintenances();
 			date1 = formatter.parse(request.getParameter("mtnancelastdate"));
 			date2 = formatter.parse(request.getParameter("mtnancenextdate"));
-//		    int assetsID = Integer.parseInt(request.getParameter("assetsID"));
-//		    int servicerID = Integer.parseInt(request.getParameter("servicerID"));
 			
 			int assetsid = Integer.parseInt(request.getParameter("assetsid"));
 		    int servicerid = Integer.parseInt(request.getParameter("servicerid"));
 		   
-			//retrieve from HTML and set the values
 		    maintenance.setMtnancelastdate(date1);
 		    maintenance.setMtnancenextdate(date2);
 		    maintenance.setMtnancedescription(request.getParameter("mtnancedescription"));
 		    maintenance.setAssetsid(assetsid);
 		    maintenance.setServicerid(servicerid);
 
-			//invoke method addOrder() in VehiclesDAO
-			String mtnanceid = request.getParameter("mtnanceid");
-			
-			if(mtnanceid == null || mtnanceid.isEmpty()) {
-				dao.addMaintenance(maintenance);
-			}
-			
-			//set attribute to a servlet request and call getVehicles() method
+			addStatus = dao.addMaintenance(maintenance);
 			request.setAttribute("maintenances", MaintenanceDAO.getMaintenances());
 			
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		
-		
-		//forward the request to ListVehicle.jsp
-		forward = LIST;
-		RequestDispatcher LIST = request.getRequestDispatcher(forward);
-		LIST.forward(request, response);
+		if (addStatus == 1) {
+			response.sendRedirect("MaintenanceController?action=list&status=SUCCESS");
+		} else {
+			response.sendRedirect("MaintenanceController?action=list&status=FAIL");
+		}
 	}
 }

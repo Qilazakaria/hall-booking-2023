@@ -14,6 +14,7 @@
 		<!-- <title>UiTM | Academic Inventory System</title> -->
 		<!-- <link rel="icon" href="assets/images/UiTM_logo.png"> -->
 		<!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
+		<title>Login Page | Hall Booking System</title>
 		
 	<link href="assets/css/Login.css" rel="stylesheet">
 		<style>

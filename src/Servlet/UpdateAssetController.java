@@ -53,16 +53,19 @@ public class UpdateAssetController extends HttpServlet {
 		 * (ParseException e) { // TODO Auto-generated catch block e.printStackTrace();
 		 * }
 		 */
-		
+		int updateStatus = 0;
 		Assets asset = new Assets();
 		asset.setAssetsid(Integer.parseInt(request.getParameter("assetsid")));
 		asset.setAssetsquantity(Integer.parseInt(request.getParameter("assetsquantity")));
 		
-		dao.updateAsset(asset); 
-		
-		request.setAttribute("assets", AssetDAO.getAllAssets());
-		RequestDispatcher view = request.getRequestDispatcher("ListAssets.jsp");
-		view.forward(request, response);
+		updateStatus = dao.updateAsset(asset); 
+
+
+		if (updateStatus == 1) {
+			response.sendRedirect("AssetsController?action=list&status=SUCCESS");
+		} else {
+			response.sendRedirect("AssetsController?action=list&status=FAIL");
+		}
 	}
 
 }

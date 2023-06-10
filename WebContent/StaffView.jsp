@@ -1,161 +1,103 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="assets/css/customernavigation.css"> 
-<link rel="stylesheet" href="assets/css/bookingForm.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-<title>Staff</title>
-<script>
-	function displayStatus() {
-		let url_string = location.href; 
-		let url = new URL(url_string);
-		let status = url.searchParams.get("status");
-
-		if (status == "SUCCESS") {
-			document.getElementById("success").style.display = "block";
-		} else if (status == "FAIL") {
-			document.getElementById("alert").style.display = "block";
-		}
-	}
-</script>
-</head>
-	<style>
-		.alert {
-		  padding: 20px;
-		  background-color: #f44336;
-		  color: white;
-		  margin: 20px 100px;
-		}
+	<head>
+		<meta charset="ISO-8859-1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<link rel="stylesheet" href="assets/css/Custom.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+		<title>Staff Page | Hall Booking System</title>
+		<script>
+			$(document).ready( function () {
+			    $('#assetTable').DataTable();
+			});
+			
+			function displayStatus() {
+				let url_string = location.href; 
+				let url = new URL(url_string);
+				let status = url.searchParams.get("status");
 		
-		.success {
-		  padding: 20px;
-		  background-color: #04AA6D;
-		  color: white;
-		  margin: 20px 100px;
-		}
-		
-		.closebtn {
-		  margin-left: 15px;
-		  color: white;
-		  font-weight: bold;
-		  float: right;
-		  font-size: 22px;
-		  line-height: 20px;
-		  cursor: pointer;
-		  transition: 0.3s;
-		}
-		
-		.closebtn:hover {
-		  color: black;
-		}
-		
-		table {
-		  font-family: arial, sans-serif;
-		  border-collapse: collapse;
-		  width: 95%;
-		  margin:auto;
-		}
-		
-		td, th {
-		  border: 1px solid #dddddd;
-		  text-align: center;
-		  padding: 8px;
-		}
-		
-		tr:nth-child(even) {
-		  background-color: #eeeeee;
-		}
-		
-		.button {
-		  border: none;
-		  color: #3A9BDC;
-		  padding: 10px 22px;
-		  text-align: center;
-		  text-decoration: none;
-		  display: inline-block;
-		  font-size: 16px;
-		  margin: 2px 2px;
-		  transition-duration: 0.4s;
-		  cursor: pointer;
-		}
-		
-		.button2 {
-		  background-color: #52BE80; 
-		  color: black; 
-		  border: 2px solid #52BE80;
-		}
-		
-		.button2:hover {
-		  background-color: #52BE80;
-		  color: black;
-		}
-	</style>
-<body onload="displayStatus()">
-<%@page import="staff.staffDAO,staff.Staff,java.util.*"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>  
-   
-<%  
-List<Staff> list=staffDAO.getAllRecords();  
-request.setAttribute("list",list);  
-%> 
-
-
-	<div class="navbar"> 
-		 <a href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
-		 <a class="active" href="StaffView.jsp"><i class="split"></i> Staff</a>
-		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
-		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
-		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
-		 <a href="ListAssets.jsp"><i class="" class="split"></i> Assets</a> 
-		 <a  href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
-		 
-		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+				if (status == "SUCCESS") {
+					document.getElementById("success").style.display = "block";
+				} else if (status == "FAIL") {
+					document.getElementById("fail").style.display = "block";
+				}
+			}
+		</script>
+	</head>
+	<body onload="displayStatus()">
+		<%@page import="staff.staffDAO, staff.Staff, java.util.*"%>
+		<%  
+			List<Staff> staffs = staffDAO.getAllRecords();  
+			request.setAttribute("staffs", staffs);
+		%> 
+		<div class="nav-bar"> 
+			<a href="AdminMainPage.jsp">Home</a>
+			<a class="active" href="StaffView.jsp">Staff</a>
+			<a href="ListCustomer.jsp">Customer</a>
+			<a href="ServicerView.jsp">Servicer</a>
+			<a href="MaintenanceController?action=list">Maintenance</a>
+			<a href="AssetsController?action=list">Assets</a>
+			<a href="StaffListBooking.jsp">Booking</a>
+			<a style="float:right" href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a>
 		</div>
-		<br>
-		<div style="display: none" id="alert" class="alert">
-		  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-		  <strong>Fail!</strong>
+		<div class="w-75" style="margin: 10px auto">
+			<div style="display: none" id="success" class="alert alert-success" role="alert">
+				<b>Successful</b>
+			</div>
+			<div style="display: none" id="fail" class="alert alert-danger" role="alert">
+				<b>Failed</b>
+			</div>
 		</div>
-		<div style="display: none" id="success" class="success">
-		  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-		  <strong>Success!</strong>
+		<div class="card w-75" style="margin: 10px auto">
+			<h5 class="card-header"><b>STAFF LIST</b></h5>
+			<div class="card-body p-2" style="overflow: auto">
+				<table id="assetTable" class="display">
+					<thead>
+						<tr>
+						  	<th>ID</th>
+						  	<th>NAME</th>
+						    <th>EMAIL</th>
+						    <th>ADDRESS</th>
+						    <th>PASSWORD</th>
+						    <th>TELEPHONE NUMBER</th>
+						    <th>ADMIN ID</th>
+						    <th>ACTION</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${staffs}" var="staff"> 
+						  	<tr> 
+							   	<td>${staff.getStaffid()}</td>
+							   	<td>${staff.getStaffname()}</td>
+								<td>${staff.getStaffemail()}</td>
+								<td>${staff.getStaffhomeno()}, ${staff.getStaffaddress()}, ${staff.getStaffcity()}, ${staff.getStaffposcode()}, ${staff.getStaffstate()}.</td>
+								<td>${staff.getStaffpass()}</td>
+								<td>${staff.getStafftelnum()}</td>
+								<td>${staff.getAdminid()}</td>
+								<td style="min-width: 150px !important">
+									<span class="col input-group m-1">
+										<span class="input-group-text text-black bg-info bg-opacity-75 border border-info">
+											<i class="fa fa-eyedropper"></i>
+										</span>
+										<a href="StaffUpdate.jsp?staffid=${staff.getStaffid()}" class="btn btn-info">Update</a> 
+									</span> 
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>  		
 		</div>
-		<br>
-		<table>
-		<thead>
-			<tr>
-			  	<th>ID</th>
-			  	<th>NAME</th>
-			    <th>EMAIL</th>
-			    <th>ADDRESS</th>
-			    <th>PASSWORD</th>
-			    <th>TELEPHONE NUMBER</th>
-			    <th>ADMIN ID</th>
-			    <th>ACTION</th>
-		  	</tr>
-		</thead>  
-		<tbody>
-		   <c:forEach items="${list}" var="s">
-		  		<tr>  
-				   	<td>${s.getStaffid()}</td>
-				   	<td>${s.getStaffname()}</td>
-					<td>${s.getStaffemail()}</td>
-					<td>${s.getStaffhomeno()}, ${s.getStaffaddress()}, ${s.getStaffcity()}, ${s.getStaffposcode()}, ${s.getStaffstate()}.</td>
-					<td>${s.getStaffpass()}</td>
-					<td>${s.getStafftelnum()}</td>
-					<td>${s.getAdminid()}</td>  
-					<td><a href="StaffUpdate.jsp?staffid=${s.getStaffid()}"><button class='edit'>UPDATE</button> </a></td>
-				</tr>  
-			</c:forEach>
-		</tbody>
-		</table>
-		<br></br>
-	
-		<a style="float:left"href="StaffAdd.jsp" button class="button button2">ADD STAFF</button></a>
-
-</body>
+		<div class="col input-group m-4">
+		  	<span class="input-group-text text-white bg-primary bg-opacity-75 border border-primary">
+		  		<i class="fa fa-plus"></i>
+		  	</span>
+			<a href="StaffAdd.jsp" class="btn btn-primary">Add Staff</a> 
+		</div>
+	</body>
 </html>

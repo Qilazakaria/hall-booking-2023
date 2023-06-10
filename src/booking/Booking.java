@@ -11,8 +11,22 @@ public class Booking {
 	private int bookingestimatecapacity;
 	private int bookingprice;
 	private int staffid;
+	private String staffName;
 	private int custid;
+	private String custName;
 	
+	public String getStaffName() {
+		return staffName;
+	}
+	public void setStaffName(String staffName) {
+		this.staffName = staffName;
+	}
+	public String getCustName() {
+		return custName;
+	}
+	public void setCustName(String custName) {
+		this.custName = custName;
+	}
 	public int getBookingid() {
 		return bookingid;
 	}

@@ -53,8 +53,9 @@ public class MaintenanceDAO {
 	}
 	
 	//Complete addMaintenance() method
-	public void addMaintenance(Maintenances bean) {
-				
+	public int addMaintenance(Maintenances bean) {
+		int latestId = 0;
+		int addStatus = 0;
 		//get values
 		mtnanceid = bean.getMtnanceid();
 		mtnancelastdate = bean.getMtnancelastdate();
@@ -69,18 +70,27 @@ public class MaintenanceDAO {
 		try {			
 			//call getConnection() method
 			con = Database_Connection.getConnection();
+	    	
+	    	// get latest ID
+	    	PreparedStatement psGet = con.prepareStatement("SELECT * FROM maintenance ORDER BY mtnanceid DESC LIMIT 1");
+	        ResultSet rsGet = psGet.executeQuery();
+	        
+	        while(rsGet.next()) {  
+	        	latestId = rsGet.getInt("mtnanceid");
+	        }
 
 			//create statement
-			ps = con.prepareStatement("INSERT INTO maintenance(mtnancelastdate,mtnancenextdate,mtnancedescription,assetsid,servicerid)VALUES(?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO maintenance(mtnancelastdate,mtnancenextdate,mtnancedescription,assetsid,servicerid,mtnanceid)VALUES(?,?,?,?,?,?)");
 			ps.setDate(1, lastdate);
 			ps.setDate(2, nextdate);
 			ps.setString(3, mtnancedescription);
 			ps.setInt(4, assetsid);
 			ps.setInt(5, servicerid);
+			ps.setInt(6, latestId + 1);
 					
 					
 			//execute query
-			ps.executeUpdate();
+			addStatus = ps.executeUpdate();
 			System.out.println("Successfully inserted");
 
 			//close connection
@@ -90,26 +100,27 @@ public class MaintenanceDAO {
 			}catch(Exception e) {
 			e.printStackTrace();				
 		}
+		return addStatus;
 	}
 	//Complete deleteMaintenance() method
-	public void deleteMaintenance(int mtnanceID) {
+	public int deleteMaintenance(int mtnanceID) {
+		int deleteStatus = 0;
+		mtnanceid = mtnanceID;
 		try {
-			//call getConnection() method 
-			con = Database_Connection.getConnection();
-
-			//create statement 
-			ps = con.prepareStatement("DELETE FROM maintenance WHERE mtnanceid=?");
-			ps.setInt(1, mtnanceid);
-
-			//execute query
-			ps.executeUpdate();
-
+			con = Database_Connection.getConnection(); 
+	        PreparedStatement ps = con.prepareStatement("DELETE FROM maintenance WHERE mtnanceid = ?");
+	        
+	        ps.setInt(1, mtnanceid);
+	        deleteStatus = ps.executeUpdate();
+			
 			//close connection
 			con.close();
 
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		return deleteStatus;
 	}
 
 	//LIST METHOD
@@ -134,6 +145,22 @@ public class MaintenanceDAO {
 				maintenance.setMtnancedescription(rs.getString("mtnancedescription"));
 				maintenance.setAssetsid(rs.getInt("assetsid"));
 				maintenance.setServicerid(rs.getInt("servicerid"));
+				
+				PreparedStatement getassetps=con.prepareStatement("SELECT * FROM assets where assetsid=?");  
+				getassetps.setInt(1,rs.getInt("assetsid"));  
+				
+		        ResultSet getassetrs=getassetps.executeQuery();  
+		        while(getassetrs.next()){
+		        	maintenance.setAssetsname((getassetrs.getString("assetsname")));
+		        }
+				
+				PreparedStatement getservicerps=con.prepareStatement("SELECT * FROM servicer where servicerid=?");  
+				getservicerps.setInt(1,rs.getInt("servicerid"));  
+				
+		        ResultSet getservicerrs=getservicerps.executeQuery();  
+		        while(getservicerrs.next()){
+		        	maintenance.setServicername((getservicerrs.getString("servicername")));
+		        }
 				maintenances.add(maintenance);
 			}
 
@@ -184,44 +211,39 @@ public class MaintenanceDAO {
 	
 	//update 
 			
-		public void updateMaintenance(Maintenances bean) {
-					
+		public int updateMaintenance(Maintenances bean) {
+			int updateStatus = 0;
 			mtnanceid = bean.getMtnanceid();
 			mtnancelastdate = bean.getMtnancelastdate();
 			mtnancenextdate = bean.getMtnancenextdate();
 			mtnancedescription = bean.getMtnancedescription();
-//			assetsID = bean.getAssetsID();
-//			servicerID = bean.getServicerID();
-//			vec_id = bean.getVec_id();
-//			vec_rtdate = bean.getVec_rtdate();
+			assetsid = bean.getAssetsid();
+			servicerid = bean.getServicerid();
 					
 			java.sql.Date lastdate = new java.sql.Date(mtnancelastdate.getTime());
 			java.sql.Date nextdate = new java.sql.Date(mtnancenextdate.getTime());
 			
 			try {			
-				//call getConnection() method
 				con = ConnectionManager.getConnection();
-					
-				//3. create statement
-				ps = con.prepareStatement("UPDATE maintenance SET mtnancelastdate=?,mtnancenextdate=?,mtnancedescription=? WHERE mtnanceid=?");
+				
+				ps = con.prepareStatement("UPDATE maintenance SET mtnancelastdate=?,mtnancenextdate=?,mtnancedescription=?,assetsid=?,servicerid=? WHERE mtnanceid=?");
 				ps.setDate(1, lastdate);
 				ps.setDate(2, nextdate);
 				ps.setString(3, mtnancedescription);
-//				ps.setInt(4, assetsID);
-//				ps.setInt(5, servicerID);
-				ps.setInt(4, mtnanceid);
-						
-				//4. execute query
-				ps.executeUpdate();
+				ps.setInt(4, assetsid);
+				ps.setInt(5, servicerid);
+				ps.setInt(6, mtnanceid);
+				
+				updateStatus = ps.executeUpdate();
 						
 				System.out.println("Successfully updated");
-						
-				//5. close connection
 				con.close();
 						
 			}catch(Exception e) {
 				e.printStackTrace();
 						
 			}
+			
+			return updateStatus;
 		}
 }

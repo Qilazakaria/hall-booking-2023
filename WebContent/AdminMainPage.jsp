@@ -15,8 +15,9 @@
 		<!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
 		<link href="assets/css/MainPageAdmin.css" rel="stylesheet">
 		<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="assets/css/customernavigation.css"> 
+		<link rel="stylesheet" href="assets/css/Custom.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+		<title>Home Page | Hall Booking System</title>
 		<style>
 			body {
 				background-image : url('assets/images/Hall.jpg');
@@ -49,17 +50,16 @@
 			</form>
 		</main>
 		 -->
-		<div class="navbar"> 
-		 <a class="active" href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
-		 <a href="StaffView.jsp"><i class="split"></i> Staff</a>
-		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
-		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
-		 <a href="staffListMaintenance.jsp?action=list"><i class="" class="split"></i> Maintenance</a>
-		 <a href="ListAssets.jsp"><i class="" class="split"></i> Assets</a> 
-		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
-		 
-		 <li style="float:right"><a href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
-		</div> 
+		<div class="nav-bar"> 
+			<a class="active" href="AdminMainPage.jsp">Home</a>
+			<a href="StaffView.jsp">Staff</a>
+			<a href="ListCustomer.jsp">Customer</a>
+			<a href="ServicerView.jsp">Servicer</a>
+			<a href="MaintenanceController?action=list">Maintenance</a>
+			<a href="AssetsController?action=list">Assets</a>
+			<a href="StaffListBooking.jsp">Booking</a>
+			<a style="float:right" href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a>
+		</div>
 		
 		<h1> Kompleks Japerun Duyong, Melaka</h1>
 		<br>

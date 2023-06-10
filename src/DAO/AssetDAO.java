@@ -52,8 +52,9 @@ public class AssetDAO {
 	}
 
 	//Complete addAsset() method
-	public void addAssets(Assets bean) {
-		
+	public int addAssets(Assets bean) {
+		int addStatus = 0;
+		int latestId = 0;
 		//get values
 		assetsid = bean.getAssetsid();
 		assetsname = bean.getAssetsname();
@@ -67,6 +68,14 @@ public class AssetDAO {
 		try {			
 			//call getConnection() method
 			con = Database_Connection.getConnection() ;
+	    	
+	    	// get latest ID
+	    	PreparedStatement psGet = con.prepareStatement("SELECT * FROM assets ORDER BY assetsid DESC LIMIT 1");
+	        ResultSet rsGet = psGet.executeQuery();
+	        
+	        while(rsGet.next()) {  
+	        	latestId = rsGet.getInt("assetsid");
+	        }
 
 			//create statement
 			ps = con.prepareStatement("INSERT INTO assets(assetsname,assetsquantity,assetscategory,furnmaterial,electvoltage,voltageunit,assetsid)VALUES(?,?,?,?,?,?,?)");
@@ -76,19 +85,19 @@ public class AssetDAO {
 			ps.setString(4, furnmaterial);
 			ps.setString(5, electvoltage);
 			ps.setString(6, voltageunit);
-			ps.setInt(7, assetsid);
+			ps.setInt(7, latestId + 1);
 			
 			//execute query
-			ps.executeUpdate();
+			addStatus = ps.executeUpdate();
 			System.out.println("Successfully inserted");
 
 			//close connection
 			con.close();
-			
-
 		}catch(Exception e) {
 			e.printStackTrace();				
 		}
+		
+		return addStatus;
 	}	
 
 	//Complete deleteVehicle() method
@@ -116,7 +125,7 @@ public class AssetDAO {
 
 			//create statement
 			stmt = con.createStatement();
-			String sql = "SELECT * FROM assets";
+			String sql = "SELECT * FROM assets ORDER BY assetsid";
 
 			//execute query
 			rs = stmt.executeQuery(sql);
@@ -145,8 +154,8 @@ public class AssetDAO {
 	
 	//update 
 	
-		public void updateAsset(Assets bean) {
-			
+		public int updateAsset(Assets bean) {
+			int updateStatus = 0;
 			assetsid = bean.getAssetsid();
 			assetsquantity = bean.getAssetsquantity();
 			
@@ -162,7 +171,7 @@ public class AssetDAO {
 				ps.setInt(2, assetsid);
 				
 				//4. execute query
-				ps.executeUpdate();
+				updateStatus = ps.executeUpdate();
 				
 				System.out.println("Successfully updated");
 				
@@ -173,6 +182,8 @@ public class AssetDAO {
 				e.printStackTrace();
 				
 			}
+			
+			return updateStatus;
 		}
 
 }

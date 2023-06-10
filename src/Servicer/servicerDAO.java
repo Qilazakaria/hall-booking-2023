@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import Database.Database_Connection;
 import Servicer.servicer;
+import staff.Staff;
 
 
 public class servicerDAO {
@@ -13,14 +14,23 @@ public class servicerDAO {
 	private static ResultSet rs = null;
 	private static String sql;
 	
-	   
 	public static int save(servicer se){  
-	    int status=0;  
-	    try{  
-	    	con = Database_Connection.getConnection() ; 
-	        PreparedStatement ps=con.prepareStatement(  
-	"insert into servicer(servicerid,servicername,servicertelno,servicerhomeno,serviceraddress,servicercity,servicerpostcode,servicerstate) values(?,?,?,?,?,?,?,?)"); 
-	        ps.setInt(1,se.getServicerid());
+	    int status = 0;
+	    int latestId = 0;
+	    
+	    try {
+	    	con = Database_Connection.getConnection(); 
+	    	
+	    	// get latest ID
+	    	PreparedStatement psGet = con.prepareStatement("SELECT * FROM servicer ORDER BY servicerid DESC LIMIT 1");
+	        ResultSet rsGet = psGet.executeQuery();
+	        
+	        while(rsGet.next()) {  
+	        	latestId = rsGet.getInt("servicerid");
+	        }
+	        
+	        PreparedStatement ps=con.prepareStatement("insert into servicer(servicerid,servicername,servicertelno,servicerhomeno,serviceraddress,servicercity,servicerpostcode,servicerstate) values(?,?,?,?,?,?,?,?)"); 
+	        ps.setInt(1, latestId + 1);
 	        ps.setString(2,se.getServicername());
 	        ps.setString(3,se.getServicertelno());  
 	        ps.setInt(4,se.getServicerhomeno());
@@ -29,9 +39,12 @@ public class servicerDAO {
 	        ps.setInt(7,se.getServicerpostcode());
 	        ps.setString(8,se.getServicerstate()); 
 
-  
-	        status=ps.executeUpdate();  
-	    }catch(Exception e){System.out.println(e);}  
+	        status=ps.executeUpdate();
+	        
+	    } catch(Exception e) {
+	    	System.out.println(e);
+	    }
+	    
 	    return status;  
 	}
 	
@@ -59,7 +72,7 @@ public class servicerDAO {
 	      
 	    try{  
 	    	con = Database_Connection.getConnection() ; 
-	        PreparedStatement ps=con.prepareStatement("select * from servicer");  
+	        PreparedStatement ps=con.prepareStatement("SELECT * FROM servicer ORDER BY servicerid");  
 	        ResultSet rs=ps.executeQuery();  
 	        while(rs.next()){  
 	        	servicer se=new servicer();  
@@ -99,4 +112,20 @@ public class servicerDAO {
 	    return se;  
 	}
 	
+	public int delete(int servicerId){  
+	    int status = 0;
+	    
+	    try {
+	    	con = Database_Connection.getConnection(); 
+	        PreparedStatement ps = con.prepareStatement("DELETE FROM servicer WHERE servicerid = ?");
+	        
+	        ps.setInt(1, servicerId);  
+	        status=ps.executeUpdate();
+	        
+	    } catch(Exception e) {
+	    	System.out.println(e);
+	    }  
+	  
+	    return status;  
+	}
 }

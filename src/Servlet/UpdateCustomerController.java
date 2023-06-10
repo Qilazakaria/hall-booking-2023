@@ -40,23 +40,31 @@ public class UpdateCustomerController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		Customers c = new Customers();
-		c.setCustid(Integer.parseInt(request.getParameter("custid")));
-		c.setCusttelnum(request.getParameter("custtelnum"));
-		c.setCusthomeno(Integer.parseInt(request.getParameter("custhomeno")));
-		c.setCustaddress(request.getParameter("custaddress"));
-		c.setCustcity(request.getParameter("custcity"));
-		c.setCustpostcode(Integer.parseInt(request.getParameter("custpostcode")));
-		c.setCuststate(request.getParameter("custstate"));
-		c.setCustemail(request.getParameter("custemail"));
-		c.setCustpass(request.getParameter("custpass"));	
-		
-		dao.updateCustomer(c); 
-		
-		request.setAttribute("customers", CustomersDAO.getAllCustomer());
-		RequestDispatcher view = request.getRequestDispatcher("ListCustomer.jsp");
-		view.forward(request, response);
+		int updateStatus = 0;
+		try {
+			Customers c = new Customers();
+			c.setCustid(Integer.parseInt(request.getParameter("custid")));
+			c.setCustidentificationcard(request.getParameter("custidentificationcard"));
+			c.setCustname(request.getParameter("custname"));
+			c.setCusttelnum(request.getParameter("custtelnum"));
+			c.setCusthomeno(Integer.parseInt(request.getParameter("custhomeno")));
+			c.setCustaddress(request.getParameter("custaddress"));
+			c.setCustcity(request.getParameter("custcity"));
+			c.setCustpostcode(Integer.parseInt(request.getParameter("custpostcode")));
+			c.setCuststate(request.getParameter("custstate"));
+			c.setCustemail(request.getParameter("custemail"));
+			c.setCustpass(request.getParameter("custpass"));	
+			
+			updateStatus = dao.updateCustomer(c);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+
+		if (updateStatus == 1) {
+			response.sendRedirect("ListCustomer.jsp?status=SUCCESS");
+		} else {
+			response.sendRedirect("ListCustomer.jsp?status=FAIL");
+		}
 	}
 
 }

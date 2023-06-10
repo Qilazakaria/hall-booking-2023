@@ -41,6 +41,8 @@ public class CustomerController extends HttpServlet {
 			forward = VIEW;
 			int custid = Integer.parseInt(request.getParameter("custid"));
 			request.setAttribute("customer", CustomersDAO.getCustomer(custid));
+			RequestDispatcher view = request.getRequestDispatcher(forward);
+			view.forward(request, response);
 		}
 		
 		//Complete action for list order
@@ -48,34 +50,29 @@ public class CustomerController extends HttpServlet {
 		if(action.equalsIgnoreCase("list")) {
 			forward = LIST;
 			request.setAttribute("customers", CustomersDAO.getAllCustomer());
+			RequestDispatcher view = request.getRequestDispatcher(forward);
+			view.forward(request, response);
 		}
 
 		
 		 //Complete action for delete order 
 		 if(action.equalsIgnoreCase("delete")) {
-			 forward = LIST;
 			 int custid = Integer.parseInt(request.getParameter("custid"));
-			 dao.deleteCustomer(custid);
-			 request.setAttribute("customers", CustomersDAO.getAllCustomer());
-			 RequestDispatcher view = request.getRequestDispatcher("ListCustomer.jsp"); 
-			 }
+			 int deleteStatus = dao.deleteCustomer(custid);
 
-		//forward the request
-		RequestDispatcher view = request.getRequestDispatcher(forward);
-		view.forward(request, response);
-
+			if (deleteStatus == 1) {
+				response.sendRedirect("ListCustomer.jsp?status=SUCCESS");
+			} else {
+				response.sendRedirect("ListCustomer.jsp?status=FAIL");
+			}
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		/*
-		 * SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		 * java.util.Date date1;
-		 */
-		
+		int addStatus = 0;
 		try {
 			Customers customer = new Customers();
 			/* date1 = formatter.parse(request.getParameter("vec_rtdate")); */
@@ -92,21 +89,17 @@ public class CustomerController extends HttpServlet {
 			customer.setCustemail(request.getParameter("custemail"));
 			customer.setCustpass(request.getParameter("custpass"));
 
-			dao.addCustomer(customer);
-			
-			//set attribute to a servlet request and call getAllAssets() method
-			request.setAttribute("customers", CustomersDAO.getAllCustomer());
+			addStatus = dao.addCustomer(customer);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 
-		
-		
-		//forward the request to ListVehicle.jsp
-		forward = LIST;
-		RequestDispatcher LIST = request.getRequestDispatcher("ListCustomer.jsp");
-		LIST.forward(request, response);
+		if (addStatus == 1) {
+			response.sendRedirect("ListCustomer.jsp?status=SUCCESS");
+		} else {
+			response.sendRedirect("ListCustomer.jsp?status=FAIL");
+		}
 		
 	}
 }

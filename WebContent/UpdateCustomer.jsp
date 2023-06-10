@@ -1,84 +1,86 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c"  
-   uri="http://java.sun.com/jsp/jstl/core" %> 
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<link href="customernavigation.css" rel="stylesheet" type="text/css">
-<link href="Assets.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Pi7kJWWD9rigL-MFJ0HoJU6xYNJwSSKTQ0v5nLA_Nq7thFt9fWMHhMzFn4FnokZZkjzbttFKhbfkapeoA4BVI5tZ81L8Psq2IhS2gpcytw0" charset="UTF-8"></script><script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-<title>Update Customer</title>
-</head>
-<body>
-
-<div class="container-xl">
-	<div class="table-responsive">
-		<div class="table-wrapper">
-			<div class="table-title">
-				<div class="row">
-					<div class="col-sm-6">
-                       <h2>Update Customer</h2>
-        </div>
-</div>
+	<head>
+		<meta charset="ISO-8859-1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<link rel="stylesheet" href="assets/css/Custom.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Customer Page | Hall Booking System</title>
+	</head>
+	<body>
+		<div class="nav-bar"> 
+			<a href="AdminMainPage.jsp">Home</a>
+			<a href="StaffView.jsp">Staff</a>
+			<a class="active" href="ListCustomer.jsp">Customer</a>
+			<a href="ServicerView.jsp">Servicer</a>
+			<a href="MaintenanceController?action=list">Maintenance</a>
+			<a href="AssetsController?action=list">Assets</a>
+			<a href="StaffListBooking.jsp">Booking</a>
+			<a style="float:right" href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a>
 		</div>
-		</div>
-		</div>
-		</div>
-<table class="table table-striped table-hover">
-<center>
-<div class="form">
- <form action="UpdateCustomerController" method="POST"> 
-        
-        			<input type="hidden" id="custid" name="custid" value="<c:out value="${customer.custid}"/>" ><br>
-        			
-     				 Name: 
-					<input type="text" id="custname" name="custname" value="<c:out value="${customer.custname}"/>"disabled><br>
-
-					IC Number: 
-					<input type="text" id="custidentificationcard" name="custidentificationcard" value="<c:out value="${customer.custidentificationcard}"/>"disabled><br>
-
-					Phone Number: 
-					<input type="text" id="custtelnum" name="custtelnum" value="<c:out value="${customer.custtelnum}"/>"><br>
-
-					Home Number: 
-					<input type="number" id="custhomeno" name="custhomeno" value="<c:out value="${customer.custhomeno}"/>"><br>
-
-					Address: 
-					<input type="text" id="custaddress" name="custaddress" value="<c:out value="${customer.custaddress}"/>"><br>
-
-					City: 
-					<input type="text" id="custcity" name="custcity" value="<c:out value="${customer.custcity}"/>"><br><br>
+		<div class="card w-50" style="margin: 10px auto">
+			<h5 class="card-header"><b>UPDATE CUSTOMER</b></h5>
+			<div class="card-body">
+				<form action="/UpdateCustomerController" method="post" id="wizard">
+					<label class="form-label" for="custidentificationcard">IC Number <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="hidden" id="custid" name="custid" value="<c:out value="${customer.custid}" />">
+				    <input class="form-control mb-2" type="text" id="custidentificationcard" name="custidentificationcard" value="<c:out value="${customer.custidentificationcard}" />">
+				    
+					<label class="form-label" for="custname">Name <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="text" id="custname" name="custname" value="<c:out value="${customer.custname}" />">
+				     
+				    <label class="form-label" for="custtelnum">Phone Number <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="number" id="custtelnum" name="custtelnum" value="<c:out value="${customer.custtelnum}" />">
+				 
+				    <label class="form-label" for="custhomeno">Home Number <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="number" id="custhomeno" name="custhomeno" value="<c:out value="${customer.custhomeno}" />">
+				    
+				    <label class="form-label" for="custaddress">Address <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="text" id="custaddress" name="custaddress" value="<c:out value="${customer.custaddress}" />">
 					
-					Postcode: 
-					<input type="number" id="custpostcode" name="custpostcode" value="<c:out value="${customer.custpostcode}"/>"><br>
+					<label class="form-label" for="custcity">City <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="text" id="custcity" name="custcity" value="<c:out value="${customer.custcity}" />">
+				    
+				    <label class="form-label" for="custpostcode">PostCode <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="number" id="custpostcode" name="custpostcode" value="<c:out value="${customer.custpostcode}" />">
+				    
+				    <label class="form-label" for="custstate">State <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="text" id="custstate" name="custstate" value="<c:out value="${customer.custstate}" />">
+				    
+				    <label class="form-label" for="custemail">Email <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="email" id="custemail" name="custemail" value="<c:out value="${customer.custemail}" />">
+				    
+				    <label class="form-label" for="custpass">Password <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="text" id="custpass" name="custpass" value="<c:out value="${customer.custpass}" />">
 
-					State: 
-					<input type="text" id="custstate" name="custstate" value="<c:out value="${customer.custstate}"/>"><br>
-					<label for="custstate">State</label>
-    				
-
-					Email: 
-					<input type="text" id="custemail" name="custemail" value="<c:out value="${customer.custemail}"/>"><br>
-
-					Password: 
-					<input type="text" id="custpass" name="custpass" value="<c:out value="${customer.custpass}"/>"><br>
-
-       
-        <input type="submit" value="Submit">
-        
-  </form>
-  </table>
-  </center>
-  </div>
-
-</body>
+					<br>
+					<div class="row">
+						<div class="col"></div>
+						<div class="col"></div>
+						<div class="col input-group">
+							<span class="input-group-text text-white bg-success bg-opacity-75 border border-success">
+								<i class="fa fa-check"></i>
+							</span>
+							<input class="btn btn-success w-75" type="submit" value="Update">
+						</div>
+						<div class="col input-group">
+							<span class="input-group-text text-black bg-warning bg-opacity-75 border border-warning">
+								<i class="fa fa-refresh"></i>
+							</span>
+							<input class="btn btn-warning w-75" type="reset" value="Reset">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="col input-group m-4">
+			<span class="input-group-text text-white bg-primary bg-opacity-75 border border-primary">
+				<i class="fa fa-arrow-left"></i>
+			</span>
+			<a href="ListCustomer.jsp" class="btn btn-primary">Back</a> 
+		</div>
+	</body>
 </html>

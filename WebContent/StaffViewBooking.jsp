@@ -1,109 +1,62 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="assets/css/customernavigation.css"> 
-<link rel="stylesheet" href="assets/css/staffadd.css"> 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-	
-	<title>List Booking</title>
+	<head>
+		<meta charset="ISO-8859-1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<link rel="stylesheet" href="assets/css/Custom.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Booking Page | Hall Booking System</title>
 	</head>
-	<style>
-	table {
-	  font-family: arial, sans-serif;
-	  border-collapse: collapse;
-	  width: 95%;
-	  margin:auto;
-	}
-	
-	td, th {
-	  border: 1px solid #dddddd;
-	  text-align: center;
-	  padding: 8px;
-	}
-	
-	tr:nth-child(even) {
-	  background-color: #dddddd;
-	}
-	.button {
-	  border: none;
-	  color: black;
-	  padding: 10px 22px;
-	  text-align: center;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	  margin: 2px 2px;
-	  transition-duration: 0.4s;
-	  cursor: pointer;
-	}
-	.button2 {
-	  background-color: #52BE80; 
-	  color: black; 
-	  border: 2px solid #52BE80;
-	}
-	
-	.button2:hover {
-	  background-color: #52BE80;
-	  color: black;
-	}
-	</style>
-		
-<body>
-  
- <%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
-<%  
-int bookingid = Integer.parseInt(request.getParameter("bookingid"));
-Booking b = bookingDAO.getRecordById(bookingid);
-%>      
- 
- 
- 
-
-<div class="navbar"> 
-		 <a href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
-		 <a href="StaffView.jsp"><i class="split"></i> Staff</a>
-		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
-		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
-		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
-		 <a href=""><i class="" class="split"></i> Assets</a> 
-		 <a class="active" href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
-		 
-		 <li style="float:right"><a href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+	<body>
+		<%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
+		<%  
+			int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+			Booking booking = bookingDAO.getRecordById(bookingid);
+		%>
+		<div class="nav-bar"> 
+			<a href="AdminMainPage.jsp">Home</a>
+			<a href="StaffView.jsp">Staff</a>
+			<a href="ListCustomer.jsp">Customer</a>
+			<a href="ServicerView.jsp">Servicer</a>
+			<a href="MaintenanceController?action=list">Maintenance</a>
+			<a href="AssetsController?action=list">Assets</a>
+			<a class="active" href="StaffListBooking.jsp">Booking</a>
+			<a style="float:right" href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a>
 		</div>
-		
-		<br></br>
-		<table>
-		 <br></br>
-		 
-		 <br></br>
-		  <tr>
-		  	<th>ID</th>
-		    <th>DATE</th>
-		    <th>TIME</th>
-		    <th>DESCRIPTION</th>
-		    <th>CAPACITY</th>
-		    <th>PRICE</th>
-		    
-		  </tr>
-		  <tr>
-		    <td><%= b.getBookingid() %></td>
-		    <td><%= b.getBookingdate() %></td>
-		    <td><%= b.getBookingtime() %></td>
-		    <td><%= b.getBookingdescription() %></td>
-		    <td><%= b.getBookingestimatecapacity() %></td>
-		    <td><%= b.getBookingprice() %></td>
-		  </tr>
-		
-			
-		</table>
-		<br></br>
-			
-<a style="float:left"href="StaffListBooking.jsp" button class="button button2">BACK</button></a>
-	
-</body>
-</html>
+		<div class="card w-50" style="margin: 10px auto">
+			<h5 class="card-header"><b>VIEW BOOKING</b></h5>
+			<div class="card-body">
+				<label class="form-label">Booking ID :</label>
+				<input type="text" class="form-control mb-2" name="bookingid" id="bookingid" value="<%= booking.getBookingid() %>" disabled>
+				
+				<label class="form-label">Staff Name :</label>
+				<input type="text" class="form-control mb-2" name="staffid" id="staffid" value="<%= booking.getStaffName() %>" disabled>
+				
+				<label class="form-label">Customer Name :</label>
+				<input type="text" class="form-control mb-2" name="custid" id="custid" value="<%= booking.getCustName() %>" disabled>
+				
+				<label class="form-label">Booking Date :</label>
+				<input type="text" class="form-control mb-2" id="bookingdate" name="bookingdate" value="<%= booking.getBookingdate() %>" disabled>
+				
+				<label class="form-label">Booking Time :</label>
+				<input type="text" class="form-control mb-2" id="bookingtime" name="bookingtime" value="<%= booking.getBookingtime() %>" disabled>
 
+				<label class="form-label">Booking Description :</label>
+				<input type="text" class="form-control mb-2" id="bookingdescription" name="bookingdescription" value="<%= booking.getBookingdescription() %>" disabled>
+				
+				<label class="form-label">Booking Estimate Capacity :</label>
+				<input type="text" class="form-control mb-2" id="bookingestimatecapacity" name="bookingestimatecapacity" value="<%= booking.getBookingestimatecapacity() %>" disabled>
+				
+				<label class="form-label">Booking Price (RM) :</label>
+				<input type="text" class="form-control mb-2" id="bookingprice" name="bookingprice" value="<%= booking.getBookingprice() %>" disabled>
+			</div>
+		</div>
+		<div class="col input-group m-4">
+			<span class="input-group-text text-white bg-primary bg-opacity-75 border border-primary">
+				<i class="fa fa-arrow-left"></i>
+			</span>
+			<a href="StaffListBooking.jsp" class="btn btn-primary">Back</a> 
+		</div>
+	</body>
+</html>

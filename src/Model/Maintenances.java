@@ -13,8 +13,26 @@ public class Maintenances {
 	private Date mtnancenextdate;
 	private String mtnancedescription;
 	private int assetsid;
+	private String assetsname;
 	private int servicerid;
+	private String servicername;
 	
+	public String getAssetsname() {
+		return assetsname;
+	}
+
+	public void setAssetsname(String assetsname) {
+		this.assetsname = assetsname;
+	}
+
+	public String getServicername() {
+		return servicername;
+	}
+
+	public void setServicername(String servicername) {
+		this.servicername = servicername;
+	}
+
 	public Maintenances(int mtnanceid, Date mtnancelastdate, Date mtnancenextdate, String mtnancedescription,
 			int assetsid, int servicerid) {
 		super();

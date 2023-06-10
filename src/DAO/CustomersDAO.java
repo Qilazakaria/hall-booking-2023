@@ -62,7 +62,8 @@ public class CustomersDAO {
 	}
 
 	//Complete addCustomer() method
-	public void addCustomer(Customers bean) {
+	public int addCustomer(Customers bean) {
+		int addStatus = 0;
 		int latestId = 0;
 		//get values
 		custidentificationcard = bean.getCustidentificationcard();
@@ -104,7 +105,7 @@ public class CustomersDAO {
 			
 			
 			//execute query
-			ps.executeUpdate();
+			addStatus = ps.executeUpdate();
 			System.out.println("Successfully inserted");
 
 			//close connection
@@ -114,10 +115,13 @@ public class CustomersDAO {
 		}catch(Exception e) {
 			e.printStackTrace();				
 		}
+		
+		return addStatus;
 	}	
 
 	//Complete deleteCustomer() method
-		public void deleteCustomer(int custid) {
+		public int deleteCustomer(int custid) {
+			int deleteStatus = 0;
 			try {
 				//call getConnection() method 
 				con = Database_Connection.getConnection() ;
@@ -127,7 +131,7 @@ public class CustomersDAO {
 				ps.setInt(1, custid);
 
 	           //execute query
-				ps.executeUpdate();
+				deleteStatus = ps.executeUpdate();
 				
 	           //close connection
 				con.close();
@@ -136,6 +140,7 @@ public class CustomersDAO {
 	           }catch(Exception e) {
 				e.printStackTrace();
 			}
+			return deleteStatus;
 		}
 	
 	 
@@ -182,8 +187,8 @@ public class CustomersDAO {
 	
 	//update 
 	
-		public void updateCustomer(Customers bean) {
-			
+		public int updateCustomer(Customers bean) {
+			int updateStatus = 0;
 			custid = bean.getCustid();
 			custtelnum = bean.getCusttelnum();
 			custhomeno= bean.getCusthomeno();
@@ -201,7 +206,7 @@ public class CustomersDAO {
 				con = Database_Connection.getConnection() ;
 				
 				//3. create statement
-				ps = con.prepareStatement("UPDATE customer SET custtelnum=?,custhomeno=?,custaddress=?,custcity=?,custpostcode=?,custstate=?,custemail=?,custpass=? WHERE custid=?");
+				ps = con.prepareStatement("UPDATE customer SET custtelnum=?,custhomeno=?,custaddress=?,custcity=?,custpostcode=?,custstate=?,custemail=?,custpass=?,custidentificationcard=?,custname=? WHERE custid=?");
 				ps.setString(1, custtelnum);
 				ps.setInt(2, custhomeno);
 				ps.setString(3, custaddress);
@@ -210,10 +215,12 @@ public class CustomersDAO {
 				ps.setString(6, custstate);
 				ps.setString(7, custemail);
 				ps.setString(8, custpass);
-				ps.setInt(9, custid);
+				ps.setString(9, bean.getCustidentificationcard());
+				ps.setString(10, bean.getCustname());
+				ps.setInt(11, custid);
 				
 				//4. execute query
-				ps.executeUpdate();
+				updateStatus = ps.executeUpdate();
 				
 				System.out.println("Successfully updated");
 				
@@ -224,6 +231,8 @@ public class CustomersDAO {
 				e.printStackTrace();
 				
 			}
+			
+			return updateStatus;
 		}
 
 }

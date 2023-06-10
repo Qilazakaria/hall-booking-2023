@@ -1,90 +1,112 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c"  
-   uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<link href="assets/css/ABooking.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="assets/css/customernavigation.css"> 
-<link rel="stylesheet" href="assets/css/staffadd.css"> 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+	<head>
+		<meta charset="ISO-8859-1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<link rel="stylesheet" href="assets/css/Custom.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Asset Page | Hall Booking System</title>
+		<script type="text/javascript">
+			let furnmaterial = null;
+			let electvoltage = null;
+			let voltageunit = null;
+			
+			function onHide() {
+				furnmaterial = document.getElementById("furnmaterialview");
+				electvoltage = document.getElementById("electvoltageview");
+				voltageunit = document.getElementById("voltageunitview");
 
-
-
-
-<title>Add Assets</title>
-</head>
-<body>
-
- <div class="navbar"> 
-		 <a href="AdminMainPage.jsp"><i class="split"></i> Home</a> 
-		 <a href="StaffView.jsp"><i class="split"></i> Staff</a>
-		 <a href="ListCustomer.jsp"><i class="split"></i> Customer</a> 
-		 <a href="ServicerView.jsp"><i class="" class="split"></i> Servicer</a> 
-		 <a href="staffListMaintenance.jsp"><i class="" class="split"></i> Maintenance</a>
-		 <a class="active" href="AssetsController?action=list"><i class="" class="split"></i> Assets</a> 
-		 <a href="StaffListBooking.jsp"><i class="split"></i> Booking</a> 
-		 
-		 <li style="float:right"><a href="#"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
+				furnmaterial.style.display = "none";
+				electvoltage.style.display = "none";
+				voltageunit.style.display = "none";
+			}
+			
+			function onShow(event) {
+				furnmaterial.style.display = "none";
+				electvoltage.style.display = "none";
+				voltageunit.style.display = "none";
+				
+				switch(event.target.value) {
+					case "Furniture":
+						furnmaterial.style.display = "block";
+					break;
+					case "Electrical":
+						electvoltage.style.display = "block";
+						voltageunit.style.display = "block";
+					break;
+				}
+			}
+		</script>
+	</head>
+	<body onload="onHide()">
+		<div class="nav-bar"> 
+			<a href="AdminMainPage.jsp">Home</a>
+			<a href="StaffView.jsp">Staff</a>
+			<a href="ListCustomer.jsp">Customer</a>
+			<a href="ServicerView.jsp">Servicer</a>
+			<a href="MaintenanceController?action=list">Maintenance</a>
+			<a class="active" href="AssetsController?action=list">Assets</a>
+			<a href="StaffListBooking.jsp">Booking</a>
+			<a style="float:right" href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a>
 		</div>
-
-<div class="container-xl">
-	<div class="table-responsive">
-		<div class="table-wrapper">
-			<div class="table-title">
-				<div class="row">
-					<div class="col-sm-6">
-
-	<h2></h2>
-	
-			</div>
-			</div>
+		<div class="card w-50" style="margin: 10px auto">
+		  	<h5 class="card-header"><b>ADD ASSET</b></h5>
+		  	<div class="card-body">
+				<form action="/AssetsController" method="post">
+					<label class="form-label">Asset Name : </label>
+					<input class="form-control mb-2" type="text" id="assetsname" name="assetsname" required>
+					
+					<label class="form-label">Asset Quantity : </label>
+					<input class="form-control mb-2" type="number" id="assetsquantity" name="assetsquantity" required>
+					
+					<label class="form-label">Asset Category : </label>
+					<select onchange="onShow(event)" class="form-select mb-2" id="assetscategory" name="assetscategory" required>
+						<option value=""></option>
+						<option value="Furniture">Furniture</option>
+						<option value="Electrical">Electrical</option>
+					</select>
+					
+					<span id="furnmaterialview">
+						<label class="form-label">Furniture Material : </label>
+						<input class="form-control mb-2" type="text" id="furnmaterial" name="furnmaterial">
+					</span>
+					
+					<span id="electvoltageview">
+						<label class="form-label">Electrical Voltage : </label>
+						<input class="form-control mb-2" type="text" id="electvoltage" name="electvoltage">
+					</span>
+					
+					<span id="voltageunitview">
+						<label class="form-label">Electrical Voltage Unit : </label>
+						<input class="form-control mb-2" type="text" id="voltageunit" name="voltageunit">
+					</span>
+					<br>
+					<div class="row">
+						<div class="col"></div>
+						<div class="col"></div>
+						<div class="col input-group">
+						  	<span class="input-group-text text-white bg-success bg-opacity-75 border border-success">
+						  		<i class="fa fa-check"></i>
+						  	</span>
+							<input class="btn btn-success w-75" type="submit" value="Add">
+						</div>
+						<div class="col input-group">
+						  	<span class="input-group-text text-black bg-warning bg-opacity-75 border border-warning">
+						  		<i class="fa fa-refresh"></i>
+						  	</span>
+							<input class="btn btn-warning w-75" type="reset" value="Reset" onclick="onHide()">
+						</div>
+					</div>
+				</form>
+		  	</div>
 		</div>
+		<div class="col input-group m-4">
+		  	<span class="input-group-text text-white bg-primary bg-opacity-75 border border-primary">
+		  		<i class="fa fa-arrow-left"></i>
+		  	</span>
+			<a href="AssetsController?action=list" class="btn btn-primary">Back</a> 
 		</div>
-		</div>
-		</div>
-	
-	<table class="table table-striped table-hover">
-	<center>
-	
-	<div class="form">
-		<form action="AssetsController" method="post">
-			<label for="assetsid">Asset ID: </label><br>
-    		<input type="text" id="assetsid" name="assetsid" ><br>
-		
-			<label for="assetsname">Asset Name: </label><br>
-    		<input type="text" id="assetsname" name="assetsname" ><br>
-    		
-    		<label for="assetsquantity">Asset Quantity: </label><br>
-    		<input type="number" id="assetsquantity" name="assetsquantity" ><br>
-    		
-    		<label for="assetscategory">Asset Category: </label><br>
-    		<select name="assetscategory">
-     			<option value="Furniture">Furniture</option>
-     			<option value="Electrical">Electrical</option>
-    		</select>
-    		<br>
-    		
-    		<label for="furnmaterial">Furniture Material: </label><br>
-    		<input type="text" id="furnmaterial" name="furnmaterial" ><br>
-    		
-    		<label for="electvoltage">Electrical Voltage: </label><br>
-    		<input type="text" id="electvoltage" name="electvoltage" ><br>
-    		
-    		<label for="voltageunit">Electrical Voltage Unit: </label><br>
-    		<input type="text" id="voltageunit" name="voltageunit" ><br>
-   			<br>
-   			<br>
-		  
-		  <input type="submit" value="Add Asset">
-		  <input type="reset" value="Reset">
-		  
-		</form> 
-		</table>
-		</center>
-	</div>
-<a href="AssetsController?action=list"><button class="button">BACK</button></a> 
-</body>
+	</body>
 </html>
