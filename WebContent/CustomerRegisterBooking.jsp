@@ -47,9 +47,10 @@
 					
 					<label class="form-label">Booking Estimate Capacity :</label>
 					<input type="text" class="form-control mb-2" id="bookingestimatecapacity" name="bookingestimatecapacity">
-					
+					<!--
 					<label class="form-label">Booking Price (RM) :</label>
 					<input type="text" class="form-control mb-2" id="bookingprice" name="bookingprice">
+					-->
 					<br>
 					<div class="row">
 						<div class="col"></div>
