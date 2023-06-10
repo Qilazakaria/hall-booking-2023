@@ -28,7 +28,7 @@
 	<body>
 	    <div class="center">
 	        <h1>CUSTOMER SIGNUP</h1>
-	        <form action="/Academic_System_Maven/CustomerRegistrationProcess" method="post">
+	        <form action="/CustomerRegistrationProcess" method="post">
                 <input type="text" placeholder="Identification Card" name="custidentificationcard" required>
          
                 <input type="text" placeholder="Name" name="custname" required>
