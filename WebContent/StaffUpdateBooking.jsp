@@ -57,10 +57,10 @@
 					
 					<label class="form-label">Booking Price (RM) :</label>
 					<c:if test="<%= booking.getBookingprice() == 0 %>">
-						<input type="number" class="form-control mb-2" id="bookingprice" name="bookingprice" required>
+						<input type="number" class="form-control mb-2" id="bookingprice" name="bookingprice" required min="1">
 					</c:if>
 					<c:if test="<%= booking.getBookingprice() != 0%>">
-						<input type="number" class="form-control mb-2" id="bookingprice" name="bookingprice" value="<%= booking.getBookingprice() %>" required>
+						<input type="number" class="form-control mb-2" id="bookingprice" name="bookingprice" value="<%= booking.getBookingprice() %>" required min="1">
 					</c:if>
 					<br>
 					<div class="row">

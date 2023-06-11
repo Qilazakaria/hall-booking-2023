@@ -44,14 +44,14 @@
 					<div style="text-indent: 20px"><input type="radio" name="bookingtime" id="bookingtime" value="05:00 PM - 12:00 AM"> 05:00 PM - 12:00 AM</div>
 					<div class="mb-2"></div>
 
-					<label class="form-label">Booking Description :</label>
-					<input type="text" class="form-control mb-2" id="bookingdescription" name="bookingdescription">
+					<label class="form-label">Booking Description <span class="text-danger fw-bold">*</span> :</label>
+					<input type="text" class="form-control mb-2" id="bookingdescription" name="bookingdescription" required>
 					
-					<label class="form-label">Booking Estimate Capacity :</label>
-					<input type="text" class="form-control mb-2" id="bookingestimatecapacity" name="bookingestimatecapacity">
+					<label class="form-label">Booking Estimate Capacity <span class="text-danger fw-bold">*</span> :</label>
+					<input type="number" class="form-control mb-2" id="bookingestimatecapacity" name="bookingestimatecapacity" required>
 					
-					<label class="form-label">Booking Price (RM) :</label>
-					<input type="text" class="form-control mb-2" id="bookingprice" name="bookingprice">
+					<label class="form-label">Booking Price (RM) <span class="text-danger fw-bold">*</span> :</label>
+					<input type="number" class="form-control mb-2" id="bookingprice" min="1" name="bookingprice" required>
 					<br>
 					<div class="row">
 						<div class="col"></div>

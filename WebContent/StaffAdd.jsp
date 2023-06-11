@@ -11,7 +11,7 @@
 		<script type="text/javascript">			
 			function setURL() {
 				let loginID = sessionStorage.getItem("loginID");
-				document.getElementById("staffView").value = loginID;
+				document.getElementById("currentid").value = loginID;
 				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
 				document.getElementById("staffViewBack").href = "StaffView.jsp?loginID=" + loginID;
 			}
