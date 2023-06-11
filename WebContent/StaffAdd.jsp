@@ -63,7 +63,7 @@
 					</select>
 				    
 				    <label class="form-label" for="stafftelnum">Telephone No. <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="text" name="stafftelnum" id="stafftelnum" required>
+				    <input class="form-control mb-2" type="number" name="stafftelnum" id="stafftelnum" required>
 				    
 				    <label class="form-label" for="staffpass">Password <span class="text-danger fw-bold">*</span> : </label>
 				    <input class="form-control mb-2" type="password" name="staffpass" id="staffpass" required>

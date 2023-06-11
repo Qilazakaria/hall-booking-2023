@@ -66,7 +66,7 @@
 										<span class="input-group-text text-white bg-secondary bg-opacity-75 border border-secondary">
 											<i class="fa fa-search"></i>
 										</span>
-										<a href="StaffViewBooking.jsp?bookingid=${booking.getBookingid()}" class="btn btn-secondary">View</a> 
+										<a href="CustomerBooking.jsp?bookingid=${booking.getBookingid()}" class="btn btn-secondary">View</a> 
 									</span>
 								</td>
 							</tr>  

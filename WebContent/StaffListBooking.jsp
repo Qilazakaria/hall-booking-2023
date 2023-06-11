@@ -27,9 +27,14 @@
 					document.getElementById("fail").style.display = "block";
 				}
 			}
+
+			function setURL() {
+				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
+			}
 		</script>
 	</head>
-	<body onload="displayStatus()">
+	<body onload="displayStatus(); setURL()">
 		<%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
 		<%
 			List<Booking> bookings = bookingDAO.getAllRecords();  
@@ -37,7 +42,7 @@
 		%>
 		<div class="nav-bar"> 
 			<a href="AdminMainPage.jsp">Home</a>
-			<a href="StaffView.jsp">Staff</a>
+			<a id="staffView">Staff</a>
 			<a href="ListCustomer.jsp">Customer</a>
 			<a href="ServicerView.jsp">Servicer</a>
 			<a href="MaintenanceController?action=list">Maintenance</a>

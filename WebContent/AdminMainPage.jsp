@@ -34,10 +34,15 @@
 					sessionStorage.setItem("loginID", loginID);
 				}
 			}
+			
+			function setURL() {
+				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
+			}
 		</script>
 	</head>
 	
-	<body onload="setSessionID()">
+	<body onload="setSessionID(); setURL()">
 		<!-- 
 		<main class="form-signin text-center mt-8 bg-accent">
 			<input type="button" class="w-50 p-3 fw-bold bg-accent" value="Staff"><input onclick="window.location.href='Redirect_Servlet?action=lecturer_location'" type="button" class="w-50 p-3 bg-accent-light" value="Class">
@@ -64,7 +69,7 @@
 		 -->
 		<div class="nav-bar"> 
 			<a class="active" href="AdminMainPage.jsp">Home</a>
-			<a href="StaffView.jsp">Staff</a>
+			<a id="staffView">Staff</a>
 			<a href="ListCustomer.jsp">Customer</a>
 			<a href="ServicerView.jsp">Servicer</a>
 			<a href="MaintenanceController?action=list">Maintenance</a>

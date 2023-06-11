@@ -13,6 +13,7 @@ public class Staff {
 	private String staffstate;
 	private int adminid;
 	private boolean loginstatus;
+	private boolean editStatus;
 	
 	public int getStaffid() {
 		return staffid;
@@ -85,6 +86,12 @@ public class Staff {
 	}
 	public void setLoginstatus(boolean loginstatus) {
 		this.loginstatus = loginstatus;
+	}
+	public boolean isEditStatus() {
+		return editStatus;
+	}
+	public void setEditStatus(boolean editStatus) {
+		this.editStatus = editStatus;
 	}
 	
 //	private String staff_idnum;

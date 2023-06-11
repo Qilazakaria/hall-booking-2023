@@ -37,13 +37,18 @@
 						voltageunit.style.display = "block";
 					break;
 				}
+			}		
+
+			function setURL() {
+				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
 			}
 		</script>
 	</head>
-	<body onload="onHide()">
+	<body onload="onHide(); setURL()">
 		<div class="nav-bar"> 
 			<a href="AdminMainPage.jsp">Home</a>
-			<a href="StaffView.jsp">Staff</a>
+			<a id="staffView">Staff</a>
 			<a href="ListCustomer.jsp">Customer</a>
 			<a href="ServicerView.jsp">Servicer</a>
 			<a href="MaintenanceController?action=list">Maintenance</a>

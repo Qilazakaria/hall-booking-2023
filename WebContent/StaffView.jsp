@@ -31,8 +31,16 @@
 	</head>
 	<body onload="displayStatus()">
 		<%@page import="staff.staffDAO, staff.Staff, java.util.*"%>
-		<%  
-			List<Staff> staffs = staffDAO.getAllRecords();  
+		<%
+			String loginID = request.getParameter("loginID");
+			List<Staff> staffs = staffDAO.getAllRecords();
+			for (Staff staff: staffs) {
+				if (staff.getStaffid() == Integer.parseInt(loginID)) {
+					staff.setEditStatus(true);
+				} else {
+					staff.setEditStatus(false);
+				}
+			}
 			request.setAttribute("staffs", staffs);
 		%> 
 		<div class="nav-bar"> 
@@ -80,12 +88,22 @@
 								<td>${staff.getStafftelnum()}</td>
 								<td>${staff.getAdminid()}</td>
 								<td style="min-width: 150px !important">
-									<span class="col input-group m-1">
-										<span class="input-group-text text-black bg-info bg-opacity-75 border border-info">
-											<i class="fa fa-eyedropper"></i>
+									<c:if test="${staff.isEditStatus()}">
+										<span class="col input-group m-1">
+											<span class="input-group-text text-black bg-info bg-opacity-75 border border-info">
+												<i class="fa fa-eyedropper"></i>
+											</span>
+											<a href="StaffUpdate.jsp?staffid=${staff.getStaffid()}" class="btn btn-info">Update</a> 
 										</span>
-										<a href="StaffUpdate.jsp?staffid=${staff.getStaffid()}" class="btn btn-info">Update</a> 
-									</span> 
+									</c:if>
+									<c:if test="${!staff.isEditStatus()}">
+										<span class="col input-group m-1">
+											<span class="input-group-text text-white bg-secondary bg-opacity-75 border border-secondary">
+												<i class="fa fa-search"></i>
+											</span>
+											<a href="StaffViewInfo.jsp?staffid=${staff.getStaffid()}" class="btn btn-secondary">View</a> 
+										</span>
+									</c:if>
 								</td>
 							</tr>
 						</c:forEach>

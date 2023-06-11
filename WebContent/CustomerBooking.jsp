@@ -7,10 +7,11 @@
 		<link rel="stylesheet" href="assets/css/Custom.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Booking Page | Hall Booking System</title>
-		<script type="text/javascript">			
+		<script type="text/javascript">
 			function setURL() {
 				let loginID = sessionStorage.getItem("loginID");
-				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
+				document.getElementById("viewBooking").href = "CustomerViewBooking.jsp?loginID=" + loginID;
+				document.getElementById("viewProfile").href = "/CustomerController?action=viewProfile&custid=" + loginID;
 			}
 		</script>
 	</head>
@@ -21,14 +22,11 @@
 			Booking booking = bookingDAO.getRecordById(bookingid);
 		%>
 		<div class="nav-bar"> 
-			<a href="AdminMainPage.jsp">Home</a>
-			<a id="staffView">Staff</a>
-			<a href="ListCustomer.jsp">Customer</a>
-			<a href="ServicerView.jsp">Servicer</a>
-			<a href="MaintenanceController?action=list">Maintenance</a>
-			<a href="AssetsController?action=list">Assets</a>
-			<a class="active" href="StaffListBooking.jsp">Booking</a>
-			<a style="float:right" href="index.jsp"><i class="fa fa-sign-out" class="split"></i> Logout</a>
+			<a href="CustomerMainPage.jsp">Home</a> 
+			<a class="active" id="viewBooking">Booking</a>
+			<a href="CustomerRegisterBooking.jsp">Add Booking</a> 
+			<a id="viewProfile">Edit Profile</a>
+			<a href="CustomerLogin.jsp" style="float:right"><i class="fa fa-sign-out" class="split"></i> Logout</a> 
 		</div>
 		<div class="card w-50" style="margin: 10px auto">
 			<h5 class="card-header"><b>VIEW BOOKING</b></h5>

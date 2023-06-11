@@ -7,8 +7,14 @@
 		<link rel="stylesheet" href="assets/css/Custom.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Booking Page | Hall Booking System</title>
+		<script type="text/javascript">			
+			function setURL() {
+				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
+			}
+		</script>
 	</head>
-	<body>
+	<body onload="setURL()">
 		<%@page import="booking.bookingDAO,booking.Booking,java.util.*"%>
 		<%  
 			int bookingid = Integer.parseInt(request.getParameter("bookingid"));
@@ -16,7 +22,7 @@
 		%>
 		<div class="nav-bar"> 
 			<a href="AdminMainPage.jsp">Home</a>
-			<a href="StaffView.jsp">Staff</a>
+			<a id="staffView">Staff</a>
 			<a href="ListCustomer.jsp">Customer</a>
 			<a href="ServicerView.jsp">Servicer</a>
 			<a href="MaintenanceController?action=list">Maintenance</a>

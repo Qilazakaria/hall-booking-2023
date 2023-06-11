@@ -26,9 +26,14 @@
 					document.getElementById("fail").style.display = "block";
 				}
 			}
+
+			function setURL() {
+				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
+			}
 		</script>
 	</head>
-	<body onload="displayStatus()">
+	<body onload="displayStatus(); setURL()">
 		<%@page import="DAO.AssetDAO,Model.Assets,java.util.*"%>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 		<%
@@ -37,7 +42,7 @@
 		%>
 		<div class="nav-bar"> 
 			<a href="AdminMainPage.jsp">Home</a>
-			<a href="StaffView.jsp">Staff</a>
+			<a id="staffView">Staff</a>
 			<a href="ListCustomer.jsp">Customer</a>
 			<a href="ServicerView.jsp">Servicer</a>
 			<a href="MaintenanceController?action=list">Maintenance</a>
