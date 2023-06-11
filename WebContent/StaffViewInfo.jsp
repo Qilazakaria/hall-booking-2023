@@ -8,8 +8,15 @@
 		<link rel="stylesheet" href="assets/css/Custom.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Staff Page | Hall Booking System</title>
+		<script type="text/javascript">			
+			function setURL() {
+				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
+				document.getElementById("staffViewBack").href = "StaffView.jsp?loginID=" + loginID;
+			}
+		</script>
 	</head>
-	<body>
+	<body onload="setURL()">
 		<%@page import="staff.staffDAO,staff.Staff"%>  
   
 		<%  
@@ -18,7 +25,7 @@
 		%>
 		<div class="nav-bar"> 
 			<a href="AdminMainPage.jsp">Home</a>
-			<a class="active" href="StaffView.jsp">Staff</a>
+			<a class="active" id="staffView">Staff</a>
 			<a href="ListCustomer.jsp">Customer</a>
 			<a href="ServicerView.jsp">Servicer</a>
 			<a href="MaintenanceController?action=list">Maintenance</a>
@@ -78,7 +85,7 @@
 			<span class="input-group-text text-white bg-primary bg-opacity-75 border border-primary">
 				<i class="fa fa-arrow-left"></i>
 			</span>
-			<a href="StaffView.jsp" class="btn btn-primary">Back</a> 
+			<a id="staffViewBack" class="btn btn-primary">Back</a> 
 		</div>
 	</body>
 </html>

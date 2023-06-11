@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -55,7 +56,12 @@
 					<input type="text" class="form-control mb-2" id="bookingestimatecapacity" name="bookingestimatecapacity" value="<%= booking.getBookingestimatecapacity() %>" disabled>
 					
 					<label class="form-label">Booking Price (RM) :</label>
-					<input type="text" class="form-control mb-2" id="bookingprice" name="bookingprice" value="<%= booking.getBookingprice() %>">
+					<c:if test="<%= booking.getBookingprice() == 0 %>">
+						<input type="number" class="form-control mb-2" id="bookingprice" name="bookingprice" required>
+					</c:if>
+					<c:if test="<%= booking.getBookingprice() != 0%>">
+						<input type="number" class="form-control mb-2" id="bookingprice" name="bookingprice" value="<%= booking.getBookingprice() %>" required>
+					</c:if>
 					<br>
 					<div class="row">
 						<div class="col"></div>

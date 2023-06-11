@@ -27,9 +27,14 @@
 					document.getElementById("fail").style.display = "block";
 				}
 			}
+
+			function setURL() {
+				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
+			}
 		</script>
 	</head>
-	<body onload="displayStatus()">
+	<body onload="displayStatus(); setURL()">
 		<%@page import="staff.staffDAO, staff.Staff, java.util.*"%>
 		<%
 			String loginID = request.getParameter("loginID");
@@ -45,7 +50,7 @@
 		%> 
 		<div class="nav-bar"> 
 			<a href="AdminMainPage.jsp">Home</a>
-			<a class="active" href="StaffView.jsp">Staff</a>
+			<a class="active" id="staffView">Staff</a>
 			<a href="ListCustomer.jsp">Customer</a>
 			<a href="ServicerView.jsp">Servicer</a>
 			<a href="MaintenanceController?action=list">Maintenance</a>
@@ -71,7 +76,6 @@
 						  	<th>NAME</th>
 						    <th>EMAIL</th>
 						    <th>ADDRESS</th>
-						    <th>PASSWORD</th>
 						    <th>TELEPHONE NUMBER</th>
 						    <th>ADMIN ID</th>
 						    <th>ACTION</th>
@@ -84,7 +88,6 @@
 							   	<td>${staff.getStaffname()}</td>
 								<td>${staff.getStaffemail()}</td>
 								<td>${staff.getStaffhomeno()}, ${staff.getStaffaddress()}, ${staff.getStaffcity()}, ${staff.getStaffposcode()}, ${staff.getStaffstate()}.</td>
-								<td>${staff.getStaffpass()}</td>
 								<td>${staff.getStafftelnum()}</td>
 								<td>${staff.getAdminid()}</td>
 								<td style="min-width: 150px !important">
