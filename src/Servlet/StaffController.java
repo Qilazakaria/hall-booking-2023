@@ -46,9 +46,9 @@ public class StaffController extends HttpServlet {
 		}
 		
 		if (addStatus == 1) {
-			response.sendRedirect("StaffView.jsp?status=SUCCESS");
+			response.sendRedirect("StaffView.jsp?status=SUCCESS&loginID=" + request.getParameter("currentid"));
 		} else {
-			response.sendRedirect("StaffView.jsp?status=FAIL");
+			response.sendRedirect("StaffView.jsp?status=FAIL&loginID=" + request.getParameter("currentid"));
 		}
 	}
 }

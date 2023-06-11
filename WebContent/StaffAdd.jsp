@@ -11,6 +11,7 @@
 		<script type="text/javascript">			
 			function setURL() {
 				let loginID = sessionStorage.getItem("loginID");
+				document.getElementById("staffView").value = loginID;
 				document.getElementById("staffView").href = "StaffView.jsp?loginID=" + loginID;
 				document.getElementById("staffViewBack").href = "StaffView.jsp?loginID=" + loginID;
 			}
@@ -32,6 +33,7 @@
 			<div class="card-body">
 				<form action="/StaffController" method="post" id="wizard">
 					<label class="form-label" for="staffname">Name <span class="text-danger fw-bold">*</span> : </label>
+				    <input class="form-control mb-2" type="hidden"  name="currentid" id="currentid" required>
 				    <input class="form-control mb-2" type="text"  name="staffname" id="staffname" required>
 				    
 				    <label class="form-label" for="staffemail">Email <span class="text-danger fw-bold">*</span> : </label>

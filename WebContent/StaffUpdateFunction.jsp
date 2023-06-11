@@ -5,8 +5,8 @@
 	int updateStatus = staffDAO.update(s);
 	
 	if (updateStatus == 1) {
-		response.sendRedirect("StaffView.jsp?status=SUCCESS");
+		response.sendRedirect("StaffView.jsp?status=SUCCESS&loginID=" + s.getStaffid());
 	} else {
-		response.sendRedirect("StaffView.jsp?status=FAIL");
+		response.sendRedirect("StaffView.jsp?status=FAIL&loginID=" + s.getStaffid());
 	}
 %>     
