@@ -3,7 +3,7 @@
 	<groupId>Academic_System_Maven</groupId>
 	<artifactId>Academic_System_Maven</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
