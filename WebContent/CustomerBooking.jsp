@@ -60,7 +60,7 @@
 			<span class="input-group-text text-white bg-primary bg-opacity-75 border border-primary">
 				<i class="fa fa-arrow-left"></i>
 			</span>
-			<a href="StaffListBooking.jsp" class="btn btn-primary">Back</a> 
+			<button onclick="history.back()" class="btn btn-primary">Back</button> 
 		</div>
 	</body>
 </html>
