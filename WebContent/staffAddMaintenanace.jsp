@@ -33,13 +33,13 @@
 			<div class="card-body">
 				<form action="/MaintenanceController" method="post" id="wizard">
 		    		<label class="form-label">Maintenance Last Date :</label>
-		    		<input class="form-control mb-2" type="date" id="mtnancelastdate" name="mtnancelastdate">
+		    		<input class="form-control mb-2" type="date" id="mtnancelastdate" name="mtnancelastdate" required>
 		    		
 		    		<label class="form-label">Maintenance Next Date :</label>
-		    		<input class="form-control mb-2" type="date" id="mtnancenextdate" name="mtnancenextdate">
+		    		<input class="form-control mb-2" type="date" id="mtnancenextdate" name="mtnancenextdate" required>
 		    		
 		    		<label class="form-label">Maintenance Description :</label>
-		    		<input class="form-control mb-2" type="text" id="mtnancedescription" name="mtnancedescription">
+		    		<input class="form-control mb-2" type="text" id="mtnancedescription" name="mtnancedescription" required>
 		    		
 		    		<label class="form-label">Asset :</label>
 		    		<select class="form-select mb-2" name="assetsid">
