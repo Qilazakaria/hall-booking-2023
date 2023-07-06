@@ -42,7 +42,7 @@
 		    		<input class="form-control mb-2" type="text" id="mtnancedescription" name="mtnancedescription" required>
 		    		
 		    		<label class="form-label">Asset :</label>
-		    		<select class="form-select mb-2" name="assetsid">
+		    		<select class="form-select mb-2" name="assetsid" required>
 			            <option value=""></option>
 			    		<c:forEach items="${AssetDAO.getAllAssets()}" var="asset">
 			            	<option value="${asset.assetsid}">${asset.assetsname}</option>
@@ -50,7 +50,7 @@
 		        	</select>
 		        	
 		    		<label class="form-label">Servicer :</label>
-		    		<select class="form-select mb-2" name="servicerid">
+		    		<select class="form-select mb-2" name="servicerid" required>
 			            <option value=""></option>
 			    		<c:forEach items="${servicerDAO.getAllRecords()}" var="servicer"> 
 			    			<option value="${servicer.servicerid}">${servicer.servicername}</option>
