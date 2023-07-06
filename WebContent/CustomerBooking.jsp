@@ -47,10 +47,10 @@
 				<input type="text" class="form-control mb-2" id="bookingtime" name="bookingtime" value="<%= booking.getBookingtime() %>" disabled>
 
 				<label class="form-label">Booking Description :</label>
-				<input type="text" class="form-control mb-2" id="bookingdescription" name="bookingdescription" value="<%= booking.getBookingdescription() %>" disabled>
+				<input type="text" class="form-control mb-2" id="bookingdescription" name="bookingdescription" value="<%= booking.getBookingdescription() %>" required>
 				
 				<label class="form-label">Booking Estimate Capacity :</label>
-				<input type="text" class="form-control mb-2" id="bookingestimatecapacity" name="bookingestimatecapacity" value="<%= booking.getBookingestimatecapacity() %>" disabled>
+				<input type="text" class="form-control mb-2" id="bookingestimatecapacity" name="bookingestimatecapacity" value="<%= booking.getBookingestimatecapacity() %>" required>
 				
 				<label class="form-label">Booking Price (RM) :</label>
 				<input type="text" class="form-control mb-2" id="bookingprice" name="bookingprice" value="<%= booking.getBookingprice() %>" disabled>
