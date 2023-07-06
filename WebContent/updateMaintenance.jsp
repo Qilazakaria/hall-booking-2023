@@ -34,13 +34,13 @@
 				<form action="/UpdateMaintenanceController" method="post" id="wizard">
 		    		<label class="form-label">Maintenance Last Date :</label>
 		    		<input class="form-control mb-2" type="text" id="mtnanceid" name="mtnanceid" value="<c:out value="${maintenance.mtnanceid}"/>" hidden="hidden">
-		    		<input class="form-control mb-2" type="date" id="mtnancelastdate" name="mtnancelastdate" value="<c:out value="${maintenance.mtnancelastdate}"/> required">
+		    		<input class="form-control mb-2" type="date" id="mtnancelastdate" name="mtnancelastdate" value="<c:out value="${maintenance.mtnancelastdate}"/>" required>
 		    		
 		    		<label class="form-label">Maintenance Next Date :</label>
-		    		<input class="form-control mb-2" type="date" id="mtnancenextdate" name="mtnancenextdate" value="<c:out value="${maintenance.mtnancenextdate}"/> required">
+		    		<input class="form-control mb-2" type="date" id="mtnancenextdate" name="mtnancenextdate" value="<c:out value="${maintenance.mtnancenextdate}"/>" required>
 		    		
 		    		<label class="form-label">Maintenance Description :</label>
-		    		<input class="form-control mb-2" type="text" id="mtnancedescription" name="mtnancedescription" value="<c:out value="${maintenance.mtnancedescription}"/> required">
+		    		<input class="form-control mb-2" type="text" id="mtnancedescription" name="mtnancedescription" value="<c:out value="${maintenance.mtnancedescription}"/>" required>
 		    		
 		    		<label class="form-label">Asset :</label>
 		    		<select class="form-select mb-2" name="assetsid">

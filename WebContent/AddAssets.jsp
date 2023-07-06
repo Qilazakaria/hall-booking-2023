@@ -17,10 +17,18 @@
 				furnmaterial = document.getElementById("furnmaterialview");
 				electvoltage = document.getElementById("electvoltageview");
 				voltageunit = document.getElementById("voltageunitview");
+				
+				furnmaterialinput = document.getElementById("furnmaterial");
+				electvoltageinput = document.getElementById("electvoltage");
+				voltageunitinput = document.getElementById("voltageunit");
 
 				furnmaterial.style.display = "none";
 				electvoltage.style.display = "none";
 				voltageunit.style.display = "none";
+				
+				furnmaterialinput.required = false;
+				electvoltageinput.required = false;
+				voltageunitinput.required = false;
 			}
 			
 			function onShow(event) {
@@ -28,13 +36,20 @@
 				electvoltage.style.display = "none";
 				voltageunit.style.display = "none";
 				
+				furnmaterialinput.required = false;
+				electvoltageinput.required = false;
+				voltageunitinput.required = false;
+				
 				switch(event.target.value) {
 					case "Furniture":
 						furnmaterial.style.display = "block";
+						furnmaterialinput.required = true;
 					break;
 					case "Electrical":
 						electvoltage.style.display = "block";
 						voltageunit.style.display = "block";
+						electvoltageinput.required = true;
+						voltageunitinput.required = true;
 					break;
 				}
 			}

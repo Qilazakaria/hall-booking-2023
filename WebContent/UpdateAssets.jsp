@@ -65,7 +65,7 @@
 					<input class="form-control mb-2" type="text" id="assetsname" name="assetsname" value="<c:out value="${asset.assetsname}"/>" disabled>
 					
 					<label class="form-label">Asset Quantity : </label>
-					<input class="form-control mb-2" type="number" id="assetsquantity" name="assetsquantity" value="<c:out value="${asset.assetsquantity}"/>">
+					<input class="form-control mb-2" type="number" id="assetsquantity" name="assetsquantity" value="<c:out value="${asset.assetsquantity}"/>" required>
 					
 					<label class="form-label">Asset Category : </label>
 					<select onchange="onShow(event)" class="form-select mb-2" id="assetscategory" name="assetscategory" disabled>
