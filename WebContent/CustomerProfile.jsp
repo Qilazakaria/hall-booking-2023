@@ -51,34 +51,34 @@
 				<form action="/UpdateCustomerProfileController" method="post" id="wizard">
 					<label class="form-label" for="custidentificationcard">IC Number <span class="text-danger fw-bold">*</span> : </label>
 				    <input class="form-control mb-2" type="hidden" id="custid" name="custid" value="<c:out value="${customer.custid}" />">
-				    <input class="form-control mb-2" type="text" id="custidentificationcard" name="custidentificationcard" value="<c:out value="${customer.custidentificationcard}" />">
+				    <input class="form-control mb-2" type="text" id="custidentificationcard" name="custidentificationcard" value="<c:out value="${customer.custidentificationcard}" />" required>
 				    
 					<label class="form-label" for="custname">Name <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="text" id="custname" name="custname" value="<c:out value="${customer.custname}" />">
+				    <input class="form-control mb-2" type="text" id="custname" name="custname" value="<c:out value="${customer.custname}" />" required>
 				     
 				    <label class="form-label" for="custtelnum">Phone Number <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="number" id="custtelnum" name="custtelnum" value="<c:out value="${customer.custtelnum}" />">
+				    <input class="form-control mb-2" type="number" id="custtelnum" name="custtelnum" value="<c:out value="${customer.custtelnum}" />" required>
 				 
 				    <label class="form-label" for="custhomeno">Home Number <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="number" id="custhomeno" name="custhomeno" value="<c:out value="${customer.custhomeno}" />">
+				    <input class="form-control mb-2" type="number" id="custhomeno" name="custhomeno" value="<c:out value="${customer.custhomeno}" />" required>
 				    
 				    <label class="form-label" for="custaddress">Address <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="text" id="custaddress" name="custaddress" value="<c:out value="${customer.custaddress}" />">
+				    <input class="form-control mb-2" type="text" id="custaddress" name="custaddress" value="<c:out value="${customer.custaddress}" />" required>
 					
 					<label class="form-label" for="custcity">City <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="text" id="custcity" name="custcity" value="<c:out value="${customer.custcity}" />">
+				    <input class="form-control mb-2" type="text" id="custcity" name="custcity" value="<c:out value="${customer.custcity}" />" required>
 				    
 				    <label class="form-label" for="custpostcode">PostCode <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="number" id="custpostcode" name="custpostcode" value="<c:out value="${customer.custpostcode}" />">
+				    <input class="form-control mb-2" type="number" id="custpostcode" name="custpostcode" value="<c:out value="${customer.custpostcode}" />" required>
 				    
 				    <label class="form-label" for="custstate">State <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="text" id="custstate" name="custstate" value="<c:out value="${customer.custstate}" />">
+				    <input class="form-control mb-2" type="text" id="custstate" name="custstate" value="<c:out value="${customer.custstate}" />" required>
 				    
 				    <label class="form-label" for="custemail">Email <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="email" id="custemail" name="custemail" value="<c:out value="${customer.custemail}" />">
+				    <input class="form-control mb-2" type="email" id="custemail" name="custemail" value="<c:out value="${customer.custemail}" />" required>
 				    
 				    <label class="form-label" for="custpass">Password <span class="text-danger fw-bold">*</span> : </label>
-				    <input class="form-control mb-2" type="text" id="custpass" name="custpass" value="<c:out value="${customer.custpass}" />">
+				    <input class="form-control mb-2" type="text" id="custpass" name="custpass" value="<c:out value="${customer.custpass}" />" required>
 
 					<br>
 					<div class="row">
