@@ -40,8 +40,8 @@
 					<input type="date" class="form-control mb-2" id="bookingdate" name="bookingdate" required>
 					
 					<label class="form-label">Booking Time :</label>
-					<div style="text-indent: 20px"><input type="radio" name="bookingtime" id="bookingtime" value="08:00 AM - 05:00 PM"> 08:00 AM - 05:00 PM</div>
-					<div style="text-indent: 20px"><input type="radio" name="bookingtime" id="bookingtime" value="05:00 PM - 12:00 AM"> 05:00 PM - 12:00 AM</div>
+					<div style="text-indent: 20px"><input type="radio" name="bookingtime" id="bookingtime" value="08:00 AM - 05:00 PM" required> 08:00 AM - 05:00 PM</div>
+					<div style="text-indent: 20px"><input type="radio" name="bookingtime" id="bookingtime" value="05:00 PM - 12:00 AM" required> 05:00 PM - 12:00 AM</div>
 					<div class="mb-2"></div>
 
 					<label class="form-label">Booking Description <span class="text-danger fw-bold">*</span> :</label>
